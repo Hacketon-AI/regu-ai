@@ -1,6 +1,7 @@
 import { Prisma, type Incident, type User } from "@prisma/client";
 
 import { ApiError } from "@/lib/api-error";
+import { DEMO_ACTOR, DEMO_USER_EMAIL } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { sanitizeRawLogs } from "@/lib/sanitize";
 import { createAuditTrail } from "@/modules/audit/audit.service";
@@ -15,9 +16,6 @@ import type {
   IncidentListItem,
   IncidentListResult,
 } from "@/modules/incidents/incident.types";
-
-const DEMO_ACTOR = "Demo User";
-const DEMO_USER_EMAIL = "demo@reguai.local";
 
 const incidentListSelect = {
   id: true,

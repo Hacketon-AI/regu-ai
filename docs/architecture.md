@@ -18,6 +18,7 @@ src/
   app/api/                 API route handlers
   lib/                     shared backend utilities
   modules/
+    auth/                  dummy MVP auth service and validation
     audit/                 audit trail service
     dashboard/             dashboard summary service
     incidents/             incident validation, types, service
@@ -34,6 +35,13 @@ docs/                      API, architecture, demo, security, and test docs
 ### User
 
 Stores demo user identity and future authenticated users.
+
+## Auth Flow
+
+1. `POST /api/auth/login` validates demo credentials.
+2. Valid credentials return `demo-token` and the demo user.
+3. `GET /api/auth/me` accepts `Authorization: Bearer demo-token`.
+4. This is intentionally isolated MVP auth and should be replaced before production.
 
 ### Incident
 

@@ -1,7 +1,10 @@
-import { ZodError } from "zod";
-
-import { ApiError, type ApiErrorDetail } from "@/lib/api-error";
+import { ApiError } from "@/lib/api-error";
 import { errorResponse, successResponse } from "@/lib/api-response";
+import {
+  formatZodErrors,
+  handleRouteError,
+  parseRequestBody,
+} from "@/lib/route-helpers";
 import {
   deleteIncident,
   getIncidentById,
@@ -25,7 +28,7 @@ export async function GET(_request: Request, context: IncidentRouteContext) {
 
     return successResponse("Incident retrieved successfully.", incident);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "GET /api/incidents/[id]");
   }
 }
 
@@ -47,7 +50,7 @@ export async function PATCH(request: Request, context: IncidentRouteContext) {
 
     return successResponse("Incident updated successfully.", incident);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "PATCH /api/incidents/[id]");
   }
 }
 
@@ -58,7 +61,7 @@ export async function DELETE(_request: Request, context: IncidentRouteContext) {
 
     return successResponse("Incident deleted successfully.", deletedIncident);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "DELETE /api/incidents/[id]");
   }
 }
 
@@ -77,27 +80,4 @@ async function parseParams(
   }
 
   return validation.data;
-}
-
-async function parseRequestBody(request: Request): Promise<unknown> {
-  try {
-    return await request.json();
-  } catch {
-    throw new ApiError("Invalid JSON request body.", 400);
-  }
-}
-
-function handleRouteError(error: unknown) {
-  if (error instanceof ApiError) {
-    return errorResponse(error.message, error.errors, error.statusCode);
-  }
-
-  return errorResponse("Unexpected server error.", [], 500);
-}
-
-function formatZodErrors(error: ZodError): ApiErrorDetail[] {
-  return error.issues.map((issue) => ({
-    field: issue.path.join("."),
-    message: issue.message,
-  }));
 }

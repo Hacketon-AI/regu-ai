@@ -1,5 +1,5 @@
-import { ApiError } from "@/lib/api-error";
-import { errorResponse, successResponse } from "@/lib/api-response";
+import { successResponse } from "@/lib/api-response";
+import { handleRouteError } from "@/lib/route-helpers";
 import { getDashboardSummary } from "@/modules/dashboard/dashboard.service";
 
 export async function GET() {
@@ -8,14 +8,6 @@ export async function GET() {
 
     return successResponse("Dashboard summary retrieved successfully.", summary);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "GET /api/dashboard/summary");
   }
-}
-
-function handleRouteError(error: unknown) {
-  if (error instanceof ApiError) {
-    return errorResponse(error.message, error.errors, error.statusCode);
-  }
-
-  return errorResponse("Unexpected server error.", [], 500);
 }

@@ -1,15 +1,13 @@
 import { Prisma, type IncidentTask } from "@prisma/client";
 
 import { ApiError } from "@/lib/api-error";
+import { DEMO_ACTOR, DEFAULT_TASK_OWNER } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { createAuditTrail } from "@/modules/audit/audit.service";
 import type {
   CreateTaskInput,
   UpdateTaskInput,
 } from "@/modules/tasks/task.validation";
-
-const DEMO_ACTOR = "Demo User";
-const DEFAULT_TASK_OWNER = "Unassigned";
 
 const taskAuditFields = [
   "title",
