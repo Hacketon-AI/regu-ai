@@ -7,6 +7,7 @@ import { formatZodErrors, handleRouteError } from "@/lib/route-helpers";
 import { createAuditTrail } from "@/modules/audit/audit.service";
 import { incidentIdParamSchema } from "@/modules/incidents/incident.validation";
 import { generateIncidentMarkdownReport } from "@/modules/reports/markdown-exporter";
+import { getOrGenerateIncidentReport } from "@/modules/reports/report.service";
 
 type MarkdownExportRouteContext = {
   params: Promise<{
@@ -20,6 +21,11 @@ export async function GET(
 ) {
   try {
     const { id } = await parseParams(context);
+    
+    // Ensure report exists (auto-generate if needed)
+    await getOrGenerateIncidentReport(id);
+    
+    // Fetch incident with all related data including the report
     const incident = await prisma.incident.findUnique({
       where: { id },
       include: {

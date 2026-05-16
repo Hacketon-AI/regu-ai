@@ -84,6 +84,38 @@ export async function getSavedIncidentReport(
   return incident.aiReport;
 }
 
+/**
+ * Get incident report, automatically generating it if not available.
+ * This prevents the "report not generated yet" error by generating on-demand.
+ *
+ * @param incidentId - The incident ID
+ * @returns The incident report (existing or newly generated)
+ * @throws ApiError if incident not found or generation fails
+ */
+export async function getOrGenerateIncidentReport(
+  incidentId: string,
+): Promise<IncidentAiReport> {
+  const incident = await prisma.incident.findUnique({
+    where: { id: incidentId },
+    select: {
+      id: true,
+      aiReport: true,
+    },
+  });
+
+  if (!incident) {
+    throw new ApiError("Incident not found.", 404);
+  }
+
+  // If report exists, return it
+  if (incident.aiReport) {
+    return incident.aiReport;
+  }
+
+  // Report doesn't exist, generate it automatically
+  return await generateIncidentReport(incidentId);
+}
+
 function buildGeneratedReport(
   incident: ReportIncident,
 ): GeneratedIncidentReport {

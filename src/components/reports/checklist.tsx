@@ -96,7 +96,7 @@ export function Checklist({
                 }`}
               >
                 <StatusIcon
-                  className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                  className={`w-5 h-5 mt-0.5 shrink-0 ${
                     statusConfig[item.status].color
                   }`}
                 />

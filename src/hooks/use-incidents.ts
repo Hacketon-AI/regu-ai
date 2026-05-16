@@ -120,29 +120,21 @@ async function fetchIncidentDetail(id: string): Promise<IncidentDetail> {
 }
 
 // Fetch incident report
+// Note: The backend now auto-generates reports if they don't exist,
+// so this function simply fetches the report (which may trigger generation)
 async function fetchIncidentReport(id: string): Promise<Report | null> {
   try {
     const response = await fetch(`/api/incidents/${id}/report`);
     const result = await response.json();
 
     if (!result.success) {
-      // Check if the error is "report not generated yet"
-      if (result.message === "Incident report has not been generated yet") {
-        // Automatically generate the report
-        const generateResponse = await fetch(`/api/incidents/${id}/generate-report`, {
-          method: "POST",
-        });
-        const generateResult = await generateResponse.json();
-
-        if (generateResult.success) {
-          return generateResult.data;
-        }
-      }
+      console.error("Failed to fetch incident report:", result.message);
       return null;
     }
 
     return result.data;
-  } catch {
+  } catch (error) {
+    console.error("Error fetching incident report:", error);
     return null;
   }
 }
