@@ -1,65 +1,42 @@
 "use client";
 
+import { useMemo } from "react";
 import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckSquare, Clock, User, Plus } from "lucide-react";
+import { useAllTasks } from "@/hooks/use-tasks";
 
-// Mock data for tasks
-const mockTasks = [
-  {
-    id: "1",
-    title: "Scale up API Gateway instances",
-    description: "Increase capacity to handle current load",
-    status: "IN_PROGRESS" as const,
-    priority: "HIGH" as const,
-    assignee: "Jane Smith",
-    dueDate: new Date().toISOString(),
-    incidentId: "1",
-    incidentTitle: "API Gateway Timeout Issues",
-  },
-  {
-    id: "2",
-    title: "Monitor system performance metrics",
-    description: "Set up continuous monitoring for gateway latency",
-    status: "PENDING" as const,
-    priority: "MEDIUM" as const,
-    assignee: "Bob Johnson",
-    dueDate: new Date(Date.now() + 86400000).toISOString(),
-    incidentId: "1",
-    incidentTitle: "API Gateway Timeout Issues",
-  },
-  {
-    id: "3",
-    title: "Update incident status and notify stakeholders",
-    description: "Send status update to all stakeholders",
-    status: "PENDING" as const,
-    priority: "HIGH" as const,
-    dueDate: new Date(Date.now() + 43200000).toISOString(),
-    incidentId: "1",
-    incidentTitle: "API Gateway Timeout Issues",
-  },
-  {
-    id: "4",
-    title: "Review database query performance",
-    description: "Optimize slow queries identified in the incident",
-    status: "COMPLETED" as const,
-    priority: "MEDIUM" as const,
-    assignee: "John Doe",
-    completedAt: new Date(Date.now() - 86400000).toISOString(),
-    incidentId: "2",
-    incidentTitle: "Database Connection Pool Exhaustion",
-  },
-];
+type Task = {
+  id: string;
+  incidentId: string;
+  title: string;
+  description: string | null;
+  owner: string;
+  status: string;
+  priority: string;
+  dueDate: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type Incident = {
+  id: string;
+  title: string;
+};
+
+type TaskWithIncident = Task & {
+  incident?: Incident;
+};
 
 const getStatusColor = (status: string) => {
   switch (status) {
-    case "COMPLETED":
+    case "Done":
       return "bg-green-100 text-green-800";
-    case "IN_PROGRESS":
+    case "In Progress":
       return "bg-blue-100 text-blue-800";
-    case "PENDING":
+    case "To Do":
       return "bg-yellow-100 text-yellow-800";
     default:
       return "bg-gray-100 text-gray-800";
@@ -68,21 +45,117 @@ const getStatusColor = (status: string) => {
 
 const getPriorityColor = (priority: string) => {
   switch (priority) {
-    case "HIGH":
+    case "High":
       return "bg-red-100 text-red-800";
-    case "MEDIUM":
+    case "Medium":
       return "bg-orange-100 text-orange-800";
-    case "LOW":
+    case "Low":
       return "bg-blue-100 text-blue-800";
     default:
       return "bg-gray-100 text-gray-800";
   }
 };
 
+// Sub-component: Task Badges
+type TaskBadgesProps = {
+  status: string;
+  priority: string;
+};
+
+const TaskBadges = ({ status, priority }: TaskBadgesProps) => (
+  <>
+    <Badge className={getStatusColor(status)}>{status}</Badge>
+    <Badge className={getPriorityColor(priority)}>{priority}</Badge>
+  </>
+);
+
+// Sub-component: Task Metadata
+type TaskMetadataProps = {
+  owner?: string;
+  dueDate?: string | null;
+  incident?: Incident;
+};
+
+const TaskMetadata = ({ owner, dueDate, incident }: TaskMetadataProps) => {
+  const formattedDueDate = useMemo(
+    () => (dueDate ? new Date(dueDate).toLocaleDateString() : null),
+    [dueDate],
+  );
+
+  return (
+    <div className="flex items-center gap-4 text-sm text-gray-500">
+      {owner && (
+        <div className="flex items-center gap-1">
+          <User className="w-4 h-4" />
+          <span>{owner}</span>
+        </div>
+      )}
+      {formattedDueDate && (
+        <div className="flex items-center gap-1">
+          <Clock className="w-4 h-4" />
+          <span>Due: {formattedDueDate}</span>
+        </div>
+      )}
+      {incident && (
+        <div className="text-blue-600">Related: {incident.title}</div>
+      )}
+    </div>
+  );
+};
+
+// Main component: Task Card
+type TaskCardProps = {
+  task: TaskWithIncident;
+};
+
+const TaskCard = ({ task }: TaskCardProps) => {
+  const { id, title, status, priority, description, owner, dueDate, incident } =
+    task;
+
+  return (
+    <Card key={id} className="hover:shadow-md transition-shadow">
+      <CardContent className="p-6">
+        <div className="flex items-start justify-between">
+          <div className="flex-1">
+            <div className="flex items-center gap-3 mb-2">
+              <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+              <TaskBadges status={status} priority={priority} />
+            </div>
+            {description && <p className="text-gray-600 mb-3">{description}</p>}
+            <TaskMetadata owner={owner} dueDate={dueDate} incident={incident} />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
 export default function TasksPage() {
-  const pendingTasks = mockTasks.filter((t) => t.status === "PENDING");
-  const inProgressTasks = mockTasks.filter((t) => t.status === "IN_PROGRESS");
-  const completedTasks = mockTasks.filter((t) => t.status === "COMPLETED");
+  // React Query hook
+  const { data: tasks = [], isLoading } = useAllTasks();
+
+  const pendingTasks = useMemo(
+    () => tasks.filter((t: TaskWithIncident) => t.status === "To Do"),
+    [tasks],
+  );
+  const inProgressTasks = useMemo(
+    () => tasks.filter((t: TaskWithIncident) => t.status === "In Progress"),
+    [tasks],
+  );
+  const completedTasks = useMemo(
+    () => tasks.filter((t: TaskWithIncident) => t.status === "Done"),
+    [tasks],
+  );
+
+  if (isLoading) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center h-64">
+          <p className="text-gray-600">Loading tasks...</p>
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>
@@ -143,52 +216,22 @@ export default function TasksPage() {
         {/* Tasks List */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-900">All Tasks</h2>
-          <div className="space-y-3">
-            {mockTasks.map((task) => (
-              <Card key={task.id} className="hover:shadow-md transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900">
-                          {task.title}
-                        </h3>
-                        <Badge className={getStatusColor(task.status)}>
-                          {task.status.replace("_", " ")}
-                        </Badge>
-                        <Badge className={getPriorityColor(task.priority)}>
-                          {task.priority}
-                        </Badge>
-                      </div>
-                      <p className="text-gray-600 mb-3">{task.description}</p>
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
-                        {task.assignee && (
-                          <div className="flex items-center gap-1">
-                            <User className="w-4 h-4" />
-                            <span>{task.assignee}</span>
-                          </div>
-                        )}
-                        {task.dueDate && (
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
-                            <span>
-                              Due: {new Date(task.dueDate).toLocaleDateString()}
-                            </span>
-                          </div>
-                        )}
-                        <div className="text-blue-600">
-                          Related: {task.incidentTitle}
-                        </div>
-                      </div>
-                    </div>
-                    <Button variant="outline" size="sm">
-                      View Details
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          {tasks.length === 0 ? (
+            <Card>
+              <CardContent className="p-12">
+                <div className="text-center text-gray-500">
+                  <CheckSquare className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+                  <p>No tasks found</p>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="space-y-3">
+              {tasks.map((task: TaskWithIncident) => (
+                <TaskCard key={task.id} task={task} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </DashboardLayout>

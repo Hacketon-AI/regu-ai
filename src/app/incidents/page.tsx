@@ -11,100 +11,103 @@ import { StakeholderSummary } from "@/components/reports/stakeholder-summary";
 import { PostMortemPreview } from "@/components/reports/post-mortem-preview";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import {
+  useIncidents,
+  useIncidentDetail,
+  useIncidentReport,
+  useCreateIncident,
+} from "@/hooks/use-incidents";
 
-// Mock data
-const mockIncidents = [
-  {
-    id: "1",
-    title: "API Gateway Timeout Issues",
-    severity: "HIGH" as const,
-    status: "IN_PROGRESS" as const,
-    createdAt: new Date().toISOString(),
-    affectedSystems: ["API Gateway", "Load Balancer"],
-  },
-  {
-    id: "2",
-    title: "Database Connection Pool Exhaustion",
-    severity: "CRITICAL" as const,
-    status: "OPEN" as const,
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    affectedSystems: ["PostgreSQL", "Application Server"],
-  },
-  {
-    id: "3",
-    title: "Payment Processing Delays",
-    severity: "MEDIUM" as const,
-    status: "RESOLVED" as const,
-    createdAt: new Date(Date.now() - 172800000).toISOString(),
-    affectedSystems: ["Payment Gateway", "Queue Service"],
-  },
-];
-
-const mockIncidentDetail = {
-  id: "1",
-  title: "API Gateway Timeout Issues",
-  description:
-    "Multiple users reporting timeout errors when accessing the API. Initial investigation shows increased latency in the gateway layer.",
-  severity: "HIGH",
-  status: "IN_PROGRESS",
-  category: "PERFORMANCE",
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-  affectedSystems: ["API Gateway", "Load Balancer", "Cache Layer"],
+type Incident = {
+  id: string;
+  title: string;
+  type: string;
+  severity: "Critical" | "High" | "Medium" | "Low";
+  status: string;
+  affectedSystem: string;
+  affectedUsers: number | null;
+  createdAt: string;
+  updatedAt: string;
+  hasReport: boolean;
 };
 
-const mockChecklist = [
-  {
-    id: "1",
-    task: "Identify root cause of timeout issues",
-    status: "COMPLETED" as const,
-    assignee: "John Doe",
-  },
-  {
-    id: "2",
-    task: "Scale up API Gateway instances",
-    status: "IN_PROGRESS" as const,
-    assignee: "Jane Smith",
-    dueDate: new Date().toISOString(),
-  },
-];
+type IncidentDetail = {
+  id: string;
+  title: string;
+  description: string | null;
+  type: string;
+  severity: string;
+  status: string;
+  affectedSystem: string;
+  impactSummary: string | null;
+  affectedUsers: number | null;
+  suspectedCause: string | null;
+  detectedAt: string;
+  resolvedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
 
-const mockActionPlan = [
-  {
-    id: "1",
-    action: "Implement circuit breaker pattern in API Gateway",
-    priority: "HIGH" as const,
-    owner: "Engineering Team",
-    timeline: "Within 24 hours",
-    status: "In Progress",
-  },
-];
+type TimelineEntry = {
+  time: string;
+  event: string;
+};
 
-const mockStakeholders = [
-  {
-    id: "1",
-    name: "Sarah Johnson",
-    role: "Engineering Manager",
-    department: "Engineering",
-    email: "sarah.johnson@example.com",
-    phone: "+1 (555) 123-4567",
-    notificationStatus: "NOTIFIED" as const,
-  },
-];
+type ChecklistItem = {
+  title: string;
+  done: boolean;
+  category: string;
+};
 
-const mockPostMortem = {
-  incidentTitle: "API Gateway Timeout Issues",
-  severity: "HIGH",
-  duration: "4 hours 23 minutes",
-  impactedUsers: 1250,
-  generatedAt: new Date().toISOString(),
-  sections: [
-    {
-      title: "Executive Summary",
-      content:
-        "API Gateway experienced timeout issues affecting 15% of requests.",
-    },
-  ],
+type TechnicalActionPlan = {
+  backend?: string[];
+  database?: string[];
+  qa?: string[];
+  devops?: string[];
+  security?: string[];
+  compliance?: string[];
+};
+
+type PostmortemReport = {
+  executiveSummary: string;
+  incidentDetails: string;
+  impact: string;
+  timeline: TimelineEntry[];
+  rootCause: string;
+  resolution: string;
+  preventionPlan: string[];
+  actionItems: string[];
+  owners: string[];
+  auditNotes: string[];
+};
+
+type RiskClassification = {
+  recommendedSeverity: string;
+  category: string;
+  businessRisk: string;
+  technicalRisk: string;
+  complianceRisk: string;
+  recommendedSla: string;
+};
+
+type Report = {
+  id: string;
+  riskClassification: RiskClassification;
+  timeline: TimelineEntry[];
+  checklist: ChecklistItem[];
+  technicalActionPlan: TechnicalActionPlan;
+  stakeholderSummary: string;
+  postmortemReport: PostmortemReport;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type IncidentFormData = {
+  title: string;
+  description: string;
+  severity: string;
+  category: string;
+  affectedSystems: string;
 };
 
 export default function IncidentsPage() {
@@ -113,14 +116,42 @@ export default function IncidentsPage() {
     null,
   );
 
+  // React Query hooks
+  const { data: incidents = [], isLoading } = useIncidents();
+
+  const { data: incidentDetail } = useIncidentDetail(
+    view === "detail" ? selectedIncidentId : null,
+  );
+
+  const { data: report } = useIncidentReport(
+    view === "detail" ? selectedIncidentId : null,
+  );
+
+  const createIncidentMutation = useCreateIncident();
+
   const handleViewIncident = (id: string) => {
     setSelectedIncidentId(id);
     setView("detail");
   };
 
-  const handleCreateIncident = (data: unknown) => {
-    console.log("Creating incident:", data);
-    setView("list");
+  const handleCreateIncident = async (formData: IncidentFormData) => {
+    const payload = {
+      title: formData.title,
+      description: formData.description,
+      type: formData.category,
+      severity: formData.severity,
+      status: "Open",
+      affectedSystem: formData.affectedSystems || "Unknown",
+      impactSummary: formData.description,
+      detectedAt: new Date().toISOString(),
+    };
+
+    try {
+      await createIncidentMutation.mutateAsync(payload);
+      setView("list");
+    } catch (err) {
+      console.error("Error creating incident:", err);
+    }
   };
 
   return (
@@ -140,10 +171,31 @@ export default function IncidentsPage() {
                 Create Incident
               </Button>
             </div>
-            <IncidentList
-              incidents={mockIncidents}
-              onViewIncident={handleViewIncident}
-            />
+            {isLoading ? (
+              <div className="flex items-center justify-center h-64">
+                <p className="text-gray-600">Loading incidents...</p>
+              </div>
+            ) : (
+              <IncidentList
+                incidents={incidents.map((inc) => ({
+                  id: inc.id,
+                  title: inc.title,
+                  severity: inc.severity.toUpperCase() as
+                    | "CRITICAL"
+                    | "HIGH"
+                    | "MEDIUM"
+                    | "LOW",
+                  status: inc.status.toUpperCase().replace(" ", "_") as
+                    | "OPEN"
+                    | "IN_PROGRESS"
+                    | "RESOLVED"
+                    | "CLOSED",
+                  createdAt: inc.createdAt,
+                  affectedSystems: [inc.affectedSystem],
+                }))}
+                onViewIncident={handleViewIncident}
+              />
+            )}
           </>
         )}
 
@@ -167,7 +219,7 @@ export default function IncidentsPage() {
           </>
         )}
 
-        {view === "detail" && (
+        {view === "detail" && incidentDetail && (
           <>
             <div className="flex items-center justify-between">
               <div>
@@ -183,13 +235,92 @@ export default function IncidentsPage() {
               </Button>
             </div>
             <IncidentDetailTabs
-              incident={mockIncidentDetail}
-              checklist={<Checklist items={mockChecklist} />}
-              actionPlan={<ActionPlan actions={mockActionPlan} />}
-              stakeholderSummary={
-                <StakeholderSummary stakeholders={mockStakeholders} />
+              incident={{
+                id: incidentDetail.id,
+                title: incidentDetail.title,
+                description: incidentDetail.description || "",
+                severity: incidentDetail.severity,
+                status: incidentDetail.status,
+                category: incidentDetail.type,
+                createdAt: incidentDetail.createdAt,
+                updatedAt: incidentDetail.updatedAt,
+                affectedSystems: [incidentDetail.affectedSystem],
+              }}
+              checklist={
+                <Checklist
+                  items={
+                    report?.checklist.map((item) => ({
+                      id: item.title,
+                      task: item.title,
+                      status: item.done
+                        ? ("COMPLETED" as const)
+                        : ("PENDING" as const),
+                      assignee: undefined,
+                    })) || []
+                  }
+                />
               }
-              postMortem={<PostMortemPreview data={mockPostMortem} />}
+              actionPlan={
+                <ActionPlan
+                  actions={
+                    report?.technicalActionPlan
+                      ? Object.entries(report.technicalActionPlan).flatMap(
+                          ([team, actions]) =>
+                            (actions || []).map((action, idx) => ({
+                              id: `${team}-${idx}`,
+                              action,
+                              priority: "MEDIUM" as const,
+                              owner:
+                                team.charAt(0).toUpperCase() + team.slice(1),
+                              timeline: "TBD",
+                            })),
+                        )
+                      : []
+                  }
+                />
+              }
+              stakeholderSummary={<StakeholderSummary stakeholders={[]} />}
+              postMortem={
+                report?.postmortemReport ? (
+                  <PostMortemPreview
+                    data={{
+                      incidentTitle: incidentDetail.title,
+                      severity: incidentDetail.severity,
+                      duration: "N/A",
+                      impactedUsers: incidentDetail.affectedUsers || 0,
+                      generatedAt: report.createdAt,
+                      sections: [
+                        {
+                          title: "Executive Summary",
+                          content: report.postmortemReport.executiveSummary,
+                        },
+                        {
+                          title: "Timeline",
+                          content: report.postmortemReport.timeline
+                            .map((t) => `${t.time} - ${t.event}`)
+                            .join("\n"),
+                        },
+                        {
+                          title: "Root Cause Analysis",
+                          content: report.postmortemReport.rootCause,
+                        },
+                        {
+                          title: "Impact Assessment",
+                          content: report.postmortemReport.impact,
+                        },
+                        {
+                          title: "Resolution",
+                          content: report.postmortemReport.resolution,
+                        },
+                      ],
+                    }}
+                  />
+                ) : (
+                  <div className="text-center py-8 text-gray-500">
+                    No post-mortem report available yet
+                  </div>
+                )
+              }
             />
           </>
         )}
