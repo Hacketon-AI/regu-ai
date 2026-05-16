@@ -1,7 +1,6 @@
-import { ZodError } from "zod";
-
-import { ApiError, type ApiErrorDetail } from "@/lib/api-error";
-import { errorResponse, successResponse } from "@/lib/api-response";
+import { ApiError } from "@/lib/api-error";
+import { successResponse } from "@/lib/api-response";
+import { formatZodErrors, handleRouteError } from "@/lib/route-helpers";
 import { incidentIdParamSchema } from "@/modules/incidents/incident.validation";
 import { getSavedIncidentReport } from "@/modules/reports/report.service";
 
@@ -18,7 +17,7 @@ export async function GET(_request: Request, context: IncidentReportRouteContext
 
     return successResponse("Incident report retrieved successfully.", report);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "GET /api/incidents/[id]/report");
   }
 }
 
@@ -37,19 +36,4 @@ async function parseParams(
   }
 
   return validation.data;
-}
-
-function handleRouteError(error: unknown) {
-  if (error instanceof ApiError) {
-    return errorResponse(error.message, error.errors, error.statusCode);
-  }
-
-  return errorResponse("Unexpected server error.", [], 500);
-}
-
-function formatZodErrors(error: ZodError): ApiErrorDetail[] {
-  return error.issues.map((issue) => ({
-    field: issue.path.join("."),
-    message: issue.message,
-  }));
 }

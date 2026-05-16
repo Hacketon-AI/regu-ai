@@ -1,6 +1,7 @@
 import { Prisma, type IncidentAiReport } from "@prisma/client";
 
 import { ApiError } from "@/lib/api-error";
+import { DEMO_ACTOR } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { createAuditTrail } from "@/modules/audit/audit.service";
 import { generateTechnicalActionPlan } from "@/modules/reports/action-plan-generator";
@@ -18,8 +19,6 @@ import { defaultTemplate } from "@/modules/reports/templates/default-template";
 import { paymentTemplate } from "@/modules/reports/templates/payment-template";
 import { securityTemplate } from "@/modules/reports/templates/security-template";
 import { generateTimeline } from "@/modules/reports/timeline-generator";
-
-const DEMO_ACTOR = "Demo User";
 
 type ReportAuditSummary = Record<string, Prisma.InputJsonValue | null>;
 

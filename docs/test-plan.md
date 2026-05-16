@@ -40,7 +40,55 @@ Run it twice to confirm idempotency.
 npm run dev
 ```
 
-## 5. Dashboard Summary
+## 5. Dummy Auth
+
+Valid login:
+
+```bash
+curl -X POST http://localhost:3000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "demo@reguai.local",
+    "password": "demo-password"
+  }'
+```
+
+Expected:
+
+- `success: true`
+- response contains `token: "demo-token"`
+
+Invalid login:
+
+```bash
+curl -X POST http://localhost:3000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "demo@reguai.local",
+    "password": "wrong-password"
+  }'
+```
+
+Expected: `401` with `success: false`.
+
+Current user:
+
+```bash
+curl http://localhost:3000/api/auth/me \
+  -H "Authorization: Bearer demo-token"
+```
+
+Expected: demo user is returned.
+
+Unauthorized current user:
+
+```bash
+curl http://localhost:3000/api/auth/me
+```
+
+Expected: `401` with `success: false`.
+
+## 6. Dashboard Summary
 
 ```bash
 curl http://localhost:3000/api/dashboard/summary
@@ -53,7 +101,7 @@ Expected:
 - severity and category counts are present
 - recent incidents are returned
 
-## 6. List Incidents
+## 7. List Incidents
 
 ```bash
 curl "http://localhost:3000/api/incidents?page=1&limit=20"
@@ -65,7 +113,7 @@ Expected:
 - seeded incidents are listed
 - `rawLogs` is not included in list items
 
-## 7. Create Incident
+## 8. Create Incident
 
 ```bash
 curl -X POST http://localhost:3000/api/incidents \
@@ -90,7 +138,7 @@ Expected:
 - incident is created
 - audit trail contains `Incident created`
 
-## 8. Get Incident Detail
+## 9. Get Incident Detail
 
 ```bash
 curl http://localhost:3000/api/incidents/{incidentId}
@@ -103,7 +151,7 @@ Expected:
 - `tasks`
 - `auditTrails`
 
-## 9. Update Incident
+## 10. Update Incident
 
 ```bash
 curl -X PATCH http://localhost:3000/api/incidents/{incidentId} \
@@ -119,7 +167,7 @@ Expected:
 - `resolvedAt` is auto-filled
 - audit trail contains `Incident updated`
 
-## 10. Generate Report
+## 11. Generate Report
 
 ```bash
 curl -X POST http://localhost:3000/api/incidents/{incidentId}/generate-report
@@ -131,7 +179,7 @@ Expected:
 - response contains risk classification, timeline, checklist, action plan, stakeholder summary, and postmortem
 - audit trail contains `Report generated`
 
-## 11. Get Report
+## 12. Get Report
 
 ```bash
 curl http://localhost:3000/api/incidents/{incidentId}/report
@@ -141,7 +189,7 @@ Expected:
 
 - saved report is returned
 
-## 12. Create Task
+## 13. Create Task
 
 ```bash
 curl -X POST http://localhost:3000/api/incidents/{incidentId}/tasks \
@@ -161,7 +209,7 @@ Expected:
 - task is created
 - audit trail contains `Task created`
 
-## 13. Update Task
+## 14. Update Task
 
 ```bash
 curl -X PATCH http://localhost:3000/api/tasks/{taskId} \
@@ -176,7 +224,7 @@ Expected:
 - task status updates
 - audit note includes status transition
 
-## 14. Delete Task
+## 15. Delete Task
 
 ```bash
 curl -X DELETE http://localhost:3000/api/tasks/{taskId}
@@ -187,7 +235,7 @@ Expected:
 - task is deleted
 - audit trail contains `Task deleted`
 
-## 15. Export Markdown
+## 16. Export Markdown
 
 ```bash
 curl -H "Accept: text/markdown" \
@@ -200,7 +248,7 @@ Expected:
 - Markdown includes incident overview, risk classification fallback or generated report, tasks, and audit trail
 - audit trail contains `Report exported`
 
-## 16. Validate Audit Trail Behavior
+## 17. Validate Audit Trail Behavior
 
 ```bash
 curl http://localhost:3000/api/incidents/{incidentId}

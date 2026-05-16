@@ -1,7 +1,9 @@
-import { ZodError } from "zod";
-
-import { ApiError, type ApiErrorDetail } from "@/lib/api-error";
 import { errorResponse, successResponse } from "@/lib/api-response";
+import {
+  formatZodErrors,
+  handleRouteError,
+  parseRequestBody,
+} from "@/lib/route-helpers";
 import {
   createIncident,
   listIncidents,
@@ -28,7 +30,7 @@ export async function GET(request: Request) {
 
     return successResponse("Incidents retrieved successfully.", result);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "GET /api/incidents");
   }
 }
 
@@ -49,29 +51,6 @@ export async function POST(request: Request) {
 
     return successResponse("Incident created successfully.", incident, 201);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "POST /api/incidents");
   }
-}
-
-async function parseRequestBody(request: Request): Promise<unknown> {
-  try {
-    return await request.json();
-  } catch {
-    throw new ApiError("Invalid JSON request body.", 400);
-  }
-}
-
-function handleRouteError(error: unknown) {
-  if (error instanceof ApiError) {
-    return errorResponse(error.message, error.errors, error.statusCode);
-  }
-
-  return errorResponse("Unexpected server error.", [], 500);
-}
-
-function formatZodErrors(error: ZodError): ApiErrorDetail[] {
-  return error.issues.map((issue) => ({
-    field: issue.path.join("."),
-    message: issue.message,
-  }));
 }

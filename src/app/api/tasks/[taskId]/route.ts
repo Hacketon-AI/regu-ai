@@ -1,7 +1,10 @@
-import { ZodError } from "zod";
-
-import { ApiError, type ApiErrorDetail } from "@/lib/api-error";
+import { ApiError } from "@/lib/api-error";
 import { errorResponse, successResponse } from "@/lib/api-response";
+import {
+  formatZodErrors,
+  handleRouteError,
+  parseRequestBody,
+} from "@/lib/route-helpers";
 import {
   deleteIncidentTask,
   updateIncidentTask,
@@ -35,7 +38,7 @@ export async function PATCH(request: Request, context: TaskRouteContext) {
 
     return successResponse("Incident task updated successfully.", task);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "PATCH /api/tasks/[taskId]");
   }
 }
 
@@ -46,7 +49,7 @@ export async function DELETE(_request: Request, context: TaskRouteContext) {
 
     return successResponse("Incident task deleted successfully.", deletedTask);
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "DELETE /api/tasks/[taskId]");
   }
 }
 
@@ -65,27 +68,4 @@ async function parseParams(
   }
 
   return validation.data;
-}
-
-async function parseRequestBody(request: Request): Promise<unknown> {
-  try {
-    return await request.json();
-  } catch {
-    throw new ApiError("Invalid JSON request body.", 400);
-  }
-}
-
-function handleRouteError(error: unknown) {
-  if (error instanceof ApiError) {
-    return errorResponse(error.message, error.errors, error.statusCode);
-  }
-
-  return errorResponse("Unexpected server error.", [], 500);
-}
-
-function formatZodErrors(error: ZodError): ApiErrorDetail[] {
-  return error.issues.map((issue) => ({
-    field: issue.path.join("."),
-    message: issue.message,
-  }));
 }

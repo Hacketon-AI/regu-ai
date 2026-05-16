@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
-import { ZodError } from "zod";
 
-import { ApiError, type ApiErrorDetail } from "@/lib/api-error";
-import { errorResponse } from "@/lib/api-response";
+import { ApiError } from "@/lib/api-error";
+import { DEMO_ACTOR } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
+import { formatZodErrors, handleRouteError } from "@/lib/route-helpers";
 import { createAuditTrail } from "@/modules/audit/audit.service";
 import { incidentIdParamSchema } from "@/modules/incidents/incident.validation";
 import { generateIncidentMarkdownReport } from "@/modules/reports/markdown-exporter";
-
-const DEMO_ACTOR = "Demo User";
 
 type MarkdownExportRouteContext = {
   params: Promise<{
@@ -65,7 +63,7 @@ export async function GET(
       },
     });
   } catch (error) {
-    return handleRouteError(error);
+    return handleRouteError(error, "GET /api/incidents/[id]/export/markdown");
   }
 }
 
@@ -84,19 +82,4 @@ async function parseParams(
   }
 
   return validation.data;
-}
-
-function handleRouteError(error: unknown) {
-  if (error instanceof ApiError) {
-    return errorResponse(error.message, error.errors, error.statusCode);
-  }
-
-  return errorResponse("Unexpected server error.", [], 500);
-}
-
-function formatZodErrors(error: ZodError): ApiErrorDetail[] {
-  return error.issues.map((issue) => ({
-    field: issue.path.join("."),
-    message: issue.message,
-  }));
 }

@@ -36,12 +36,93 @@ Priority: `Low`, `Medium`, `High`, `Critical`
 
 ## Auth
 
-Auth endpoints are not implemented yet. Current backend actions use the demo actor `Demo User`.
+Auth is dummy MVP auth for demo use only. Current backend actions still use the demo actor `Demo User`.
 
-Future endpoints:
+Demo credentials:
 
-- `POST /api/auth/login`
-- `GET /api/auth/me`
+- Email: `demo@reguai.local`
+- Password: `demo-password`
+- Token: `demo-token`
+
+### POST /api/auth/login
+
+Purpose: Return a demo token and demo user for valid demo credentials.
+
+Request body:
+
+```json
+{
+  "email": "demo@reguai.local",
+  "password": "demo-password"
+}
+```
+
+Success response example:
+
+```json
+{
+  "success": true,
+  "message": "Login successful.",
+  "data": {
+    "token": "demo-token",
+    "user": {
+      "id": "user-id",
+      "name": "Demo User",
+      "email": "demo@reguai.local",
+      "role": "Backend Engineer"
+    }
+  }
+}
+```
+
+Error response example:
+
+```json
+{
+  "success": false,
+  "message": "Invalid email or password.",
+  "errors": []
+}
+```
+
+Frontend notes: Store the token only for demo flow. This is not production authentication.
+
+### GET /api/auth/me
+
+Purpose: Return current demo user when called with `Bearer demo-token`.
+
+Headers:
+
+```text
+Authorization: Bearer demo-token
+```
+
+Success response example:
+
+```json
+{
+  "success": true,
+  "message": "Current user retrieved successfully.",
+  "data": {
+    "id": "user-id",
+    "name": "Demo User",
+    "email": "demo@reguai.local",
+    "role": "Backend Engineer"
+  }
+}
+```
+
+Error response example:
+
+```json
+{
+  "success": false,
+  "message": "Unauthorized.",
+  "errors": []
+}
+```
+
+Frontend notes: Send `Authorization: Bearer demo-token` for demo user display.
 
 ## Dashboard
 

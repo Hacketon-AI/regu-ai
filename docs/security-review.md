@@ -34,7 +34,7 @@ Unexpected errors return a generic `Unexpected server error.` message. Internal 
 
 ### Dummy Auth Limitation
 
-The MVP uses `Demo User` as the actor. This is intentionally simple for hackathon demo stability and must be replaced before production use.
+The MVP implements dummy auth with fixed demo credentials and `demo-token`. This is intentionally simple for hackathon demo stability and must be replaced before production use.
 
 ### Audit Trail
 
