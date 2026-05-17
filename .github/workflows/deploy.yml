@@ -28,6 +28,10 @@ jobs:
           echo "Checking env keys:"
           grep -E "POSTGRES_DB|POSTGRES_USER|POSTGRES_PASSWORD|DATABASE_URL|AUTH_SECRET|AUTH_URL" .env | sed 's/=.*/=***/'
 
+      - name: Validate docker compose config
+        run: |
+          docker compose --env-file .env -f docker-compose.yml config > /dev/null
+
       - name: Stop existing containers
         run: |
           docker compose --env-file .env -f docker-compose.yml down || true
@@ -63,13 +67,17 @@ jobs:
           docker compose --env-file .env -f docker-compose.yml logs postgres
           exit 1
 
+      - name: Run Prisma generate
+        run: |
+          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npx --yes prisma@6.19.0 generate"
+
       - name: Run database migrations
         run: |
-          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npm run db:generate && npx prisma@6.19.0 migrate deploy"
+          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npx --yes prisma@6.19.0 migrate deploy"
 
       - name: Run database seed
         run: |
-          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npm run db:seed"
+          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npx --yes tsx@4.22.1 prisma/seed.ts"
 
       - name: Start application
         run: |
