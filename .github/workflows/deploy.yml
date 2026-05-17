@@ -69,15 +69,15 @@ jobs:
 
       - name: Run Prisma generate
         run: |
-          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npx --yes prisma@6.19.0 generate"
+          docker compose --env-file .env -f docker-compose.yml run --rm --user root app sh -c "npx --yes prisma@6.19.0 generate"
 
       - name: Run database migrations
         run: |
-          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npx --yes prisma@6.19.0 migrate deploy"
+          docker compose --env-file .env -f docker-compose.yml run --rm --user root app sh -c "npx --yes prisma@6.19.0 migrate deploy"
 
       - name: Run database seed
         run: |
-          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npx --yes tsx@4.22.1 prisma/seed.ts"
+          docker compose --env-file .env -f docker-compose.yml run --rm --user root app sh -c "npx --yes tsx@4.22.1 prisma/seed.ts"
 
       - name: Start application
         run: |
