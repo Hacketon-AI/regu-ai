@@ -1,20 +1,64 @@
 services:
-  reguai-postgres:
+  postgres:
     image: postgres:16-alpine
     container_name: reguai-postgres
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: reguai_db
-      POSTGRES_USER: reguai_user
-      POSTGRES_PASSWORD: reguai_password
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: ${POSTGRES_DB:-reguai_db}
+      POSTGRES_USER: ${POSTGRES_USER:-reguai_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - reguai_postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - reguai-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U reguai_user -d reguai_db"]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-reguai_user} -d ${POSTGRES_DB:-reguai_db}",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: reguai-app
+    restart: unless-stopped
+    ports:
+      - "3009:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-reguai_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-reguai_db}?schema=public
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_URL: ${AUTH_URL}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - reguai-network
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  reguai-network:
+    driver: bridge
 
 volumes:
-  reguai_postgres_data:
+  postgres_data:
+    driver: local
+
+# Made with Bob

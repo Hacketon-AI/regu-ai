@@ -1,0 +1,92 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          cat > .env << EOF
+          POSTGRES_DB=${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+          AUTH_SECRET=${{ secrets.AUTH_SECRET }}
+          AUTH_URL=${{ secrets.AUTH_URL }}
+          EOF
+
+      - name: Stop existing containers
+        run: |
+          docker-compose -f docker-compose.prod.yml down || true
+
+      - name: Pull latest images
+        run: |
+          docker-compose -f docker-compose.prod.yml pull postgres || true
+
+      - name: Build application
+        run: |
+          docker-compose -f docker-compose.prod.yml build --no-cache app
+
+      - name: Start database
+        run: |
+          docker-compose -f docker-compose.prod.yml up -d postgres
+          echo "Waiting for database to be ready..."
+          sleep 10
+
+      - name: Run database migrations
+        run: |
+          docker-compose -f docker-compose.prod.yml run --rm app sh -c "npx prisma migrate deploy && npx prisma generate"
+
+      - name: Start application
+        run: |
+          docker-compose -f docker-compose.prod.yml up -d app
+
+      - name: Wait for application to start
+        run: |
+          echo "Waiting for application to be ready..."
+          sleep 15
+
+      - name: Health check
+        run: |
+          max_attempts=10
+          attempt=0
+
+          while [ $attempt -lt $max_attempts ]; do
+            if curl -f http://localhost:3000/api/health > /dev/null 2>&1; then
+              echo "✅ Application is healthy!"
+              exit 0
+            fi
+            
+            attempt=$((attempt + 1))
+            echo "⏳ Attempt $attempt/$max_attempts - Application not ready yet..."
+            sleep 5
+          done
+
+          echo "❌ Health check failed after $max_attempts attempts"
+          docker-compose -f docker-compose.prod.yml logs app
+          exit 1
+
+      - name: Cleanup old images
+        run: |
+          docker image prune -af --filter "until=24h"
+
+      - name: Show deployment status
+        run: |
+          echo "🚀 Deployment completed successfully!"
+          docker-compose -f docker-compose.prod.yml ps
+
+      - name: Cleanup .env file
+        if: always()
+        run: |
+          rm -f .env
+
+# Made with Bob
