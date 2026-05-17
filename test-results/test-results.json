@@ -1,0 +1,2228 @@
+{
+  "config": {
+    "configFile": "D:\\Hackathon\\regu-ai\\playwright.config.ts",
+    "rootDir": "D:/Hackathon/regu-ai/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Hackathon/regu-ai/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/Hackathon/regu-ai/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 4,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:3001",
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "stdout": "ignore",
+      "stderr": "pipe"
+    }
+  },
+  "suites": [
+    {
+      "title": "auth.spec.ts",
+      "file": "auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication Flow",
+          "file": "auth.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display login page with demo credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5635,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:32:57.940Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-d5012--page-with-demo-credentials-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-d5012--page-with-demo-credentials-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-d5012--page-with-demo-credentials-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-51dc0218e787985cdeef",
+              "file": "auth.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should show error for invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7995,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:04.689Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-c1b41-ror-for-invalid-credentials-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-c1b41-ror-for-invalid-credentials-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-c1b41-ror-for-invalid-credentials-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-05954164880eaca3a0f9",
+              "file": "auth.spec.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "should successfully login with demo credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11088,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:14.915Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-96a1b-login-with-demo-credentials-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-96a1b-login-with-demo-credentials-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-96a1b-login-with-demo-credentials-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-2295adae72149503b0b9",
+              "file": "auth.spec.ts",
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "should redirect to login when accessing protected route without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5317,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:26.571Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-f8244-rotected-route-without-auth-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-f8244-rotected-route-without-auth-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-s-f8244-rotected-route-without-auth-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-4d2eb13aa042aa0b2d41",
+              "file": "auth.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "should logout successfully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7735,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:32.959Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-should-logout-successfully-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-should-logout-successfully-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\auth-Authentication-Flow-should-logout-successfully-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-c0ce6ccc7b7e02794edb",
+              "file": "auth.spec.ts",
+              "line": 63,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "complete-flow.spec.ts",
+      "file": "complete-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Complete User Flow",
+          "file": "complete-flow.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should complete full incident management workflow",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 20786,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:20:76",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                          "column": 76,
+                          "line": 20
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create incident/i\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create.*incident/i\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 21 |\u001b[39m     \n \u001b[90m 22 |\u001b[39m     \u001b[36mconst\u001b[39m timestamp \u001b[33m=\u001b[39m \u001b[33mDate\u001b[39m\u001b[33m.\u001b[39mnow()\u001b[33m;\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mconst\u001b[39m incidentTitle \u001b[33m=\u001b[39m \u001b[32m`E2E Test Incident ${timestamp}`\u001b[39m\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                            "column": 76,
+                            "line": 20
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n\n  18 |     await page.getByRole(\"button\", { name: /create incident/i }).click();\n  19 |     await page.waitForLoadState('networkidle');\n> 20 |     await expect(page.getByRole(\"heading\", { name: /create.*incident/i })).toBeVisible();\n     |                                                                            ^\n  21 |     \n  22 |     const timestamp = Date.now();\n  23 |     const incidentTitle = `E2E Test Incident ${timestamp}`;\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:20:76"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:32:57.917Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                        "column": 76,
+                        "line": 20
+                      }
+                    },
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 9669,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:20:76",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                          "column": 76,
+                          "line": 20
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create incident/i\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create.*incident/i\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 21 |\u001b[39m     \n \u001b[90m 22 |\u001b[39m     \u001b[36mconst\u001b[39m timestamp \u001b[33m=\u001b[39m \u001b[33mDate\u001b[39m\u001b[33m.\u001b[39mnow()\u001b[33m;\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mconst\u001b[39m incidentTitle \u001b[33m=\u001b[39m \u001b[32m`E2E Test Incident ${timestamp}`\u001b[39m\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                            "column": 76,
+                            "line": 20
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n\n  18 |     await page.getByRole(\"button\", { name: /create incident/i }).click();\n  19 |     await page.waitForLoadState('networkidle');\n> 20 |     await expect(page.getByRole(\"heading\", { name: /create.*incident/i })).toBeVisible();\n     |                                                                            ^\n  21 |     \n  22 |     const timestamp = Date.now();\n  23 |     const incidentTitle = `E2E Test Incident ${timestamp}`;\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:20:76"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-05-17T12:33:31.224Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f9ad4-ncident-management-workflow-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                        "column": 76,
+                        "line": 20
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "e19be929e4468375478a-5249c2917e743ff262b0",
+              "file": "complete-flow.spec.ts",
+              "line": 5,
+              "column": 7
+            },
+            {
+              "title": "should handle navigation between all pages",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 9498,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:88:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                          "column": 64,
+                          "line": 88
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 86 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m\"/tasks\"\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 87 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 88 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 89 |\u001b[39m     \n \u001b[90m 90 |\u001b[39m     \u001b[90m// Tasks -> Dashboard\u001b[39m\n \u001b[90m 91 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"link\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/dashboard/i\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                            "column": 64,
+                            "line": 88
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  86 |     await page.waitForURL(\"/tasks\", { timeout: 10000 });\n  87 |     await page.waitForLoadState('networkidle');\n> 88 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n     |                                                                ^\n  89 |     \n  90 |     // Tasks -> Dashboard\n  91 |     await page.getByRole(\"link\", { name: /dashboard/i }).click();\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:88:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:48.350Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                        "column": 64,
+                        "line": 88
+                      }
+                    },
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 10020,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:88:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                          "column": 64,
+                          "line": 88
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 86 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m\"/tasks\"\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 87 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 88 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 89 |\u001b[39m     \n \u001b[90m 90 |\u001b[39m     \u001b[90m// Tasks -> Dashboard\u001b[39m\n \u001b[90m 91 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"link\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/dashboard/i\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                            "column": 64,
+                            "line": 88
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  86 |     await page.waitForURL(\"/tasks\", { timeout: 10000 });\n  87 |     await page.waitForLoadState('networkidle');\n> 88 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n     |                                                                ^\n  89 |     \n  90 |     // Tasks -> Dashboard\n  91 |     await page.getByRole(\"link\", { name: /dashboard/i }).click();\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts:88:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-05-17T12:34:04.591Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-4198b-avigation-between-all-pages-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\complete-flow.spec.ts",
+                        "column": 64,
+                        "line": 88
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "e19be929e4468375478a-4c9e3dff69cf768c97c8",
+              "file": "complete-flow.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "should display consistent UI elements across pages",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 16745,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:22.929Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-26b9f-nt-UI-elements-across-pages-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-26b9f-nt-UI-elements-across-pages-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-26b9f-nt-UI-elements-across-pages-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e19be929e4468375478a-b84fa332adc914e4c72f",
+              "file": "complete-flow.spec.ts",
+              "line": 105,
+              "column": 7
+            },
+            {
+              "title": "should handle form validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8850,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:40.523Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f3f70-ould-handle-form-validation-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f3f70-ould-handle-form-validation-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\complete-flow-Complete-Use-f3f70-ould-handle-form-validation-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e19be929e4468375478a-8c858e78ebdad24e4a1a",
+              "file": "complete-flow.spec.ts",
+              "line": 120,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "dashboard.spec.ts",
+      "file": "dashboard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Dashboard",
+          "file": "dashboard.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display dashboard with stats cards",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 19591,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:32:57.941Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-b2656--dashboard-with-stats-cards-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-b2656--dashboard-with-stats-cards-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-b2656--dashboard-with-stats-cards-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "90cda532ab82d274b30b-86b9ea4a20d2ecbcab29",
+              "file": "dashboard.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should display sidebar navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 6972,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:18.947Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-display-sidebar-navigation-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-display-sidebar-navigation-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-display-sidebar-navigation-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "90cda532ab82d274b30b-938774b2d007c96811b6",
+              "file": "dashboard.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should navigate to incidents page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 9346,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:26.322Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-incidents-page-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-incidents-page-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-incidents-page-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "90cda532ab82d274b30b-db6c27f81402fa6bc74b",
+              "file": "dashboard.spec.ts",
+              "line": 44,
+              "column": 7
+            },
+            {
+              "title": "should navigate to tasks page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 15314,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts:63:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts",
+                          "column": 64,
+                          "line": 63
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 61 |\u001b[39m     \n \u001b[90m 62 |\u001b[39m     \u001b[90m// Verify tasks page loaded\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 64 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 65 |\u001b[39m\n \u001b[90m 66 |\u001b[39m   test(\u001b[32m\"should display incident list on dashboard\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts",
+                            "column": 64,
+                            "line": 63
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  61 |     \n  62 |     // Verify tasks page loaded\n> 63 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n     |                                                                ^\n  64 |   });\n  65 |\n  66 |   test(\"should display incident list on dashboard\", async ({ page }) => {\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts:63:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:36.131Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts",
+                        "column": 64,
+                        "line": 63
+                      }
+                    },
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 8261,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts:63:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts",
+                          "column": 64,
+                          "line": 63
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 61 |\u001b[39m     \n \u001b[90m 62 |\u001b[39m     \u001b[90m// Verify tasks page loaded\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 63 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 64 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 65 |\u001b[39m\n \u001b[90m 66 |\u001b[39m   test(\u001b[32m\"should display incident list on dashboard\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts",
+                            "column": 64,
+                            "line": 63
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  61 |     \n  62 |     // Verify tasks page loaded\n> 63 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n     |                                                                ^\n  64 |   });\n  65 |\n  66 |   test(\"should display incident list on dashboard\", async ({ page }) => {\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts:63:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-05-17T12:33:56.816Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-navigate-to-tasks-page-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\dashboard.spec.ts",
+                        "column": 64,
+                        "line": 63
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "90cda532ab82d274b30b-5257740ef23918de47d5",
+              "file": "dashboard.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "should display incident list on dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 7128,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:11.713Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-41024--incident-list-on-dashboard-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-41024--incident-list-on-dashboard-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-41024--incident-list-on-dashboard-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "90cda532ab82d274b30b-33443e2b44f64545b1d3",
+              "file": "dashboard.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should open create incident form",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 6533,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:19.738Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-open-create-incident-form-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-open-create-incident-form-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\dashboard-Dashboard-should-open-create-incident-form-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "90cda532ab82d274b30b-9f4dd9d9401094c5b02c",
+              "file": "dashboard.spec.ts",
+              "line": 75,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "incidents.spec.ts",
+      "file": "incidents.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Incidents Management",
+          "file": "incidents.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display incidents page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 20787,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:32:57.946Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-display-incidents-page-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-display-incidents-page-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-display-incidents-page-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "589074615abccf633020-53bf83b50a39d35e5cc4",
+              "file": "incidents.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "should create a new incident",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 12498,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:35:76",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                          "column": 76,
+                          "line": 35
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 33 |\u001b[39m     \n \u001b[90m 34 |\u001b[39m     \u001b[90m// Verify form is displayed\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 35 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create.*incident/i\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 36 |\u001b[39m     \n \u001b[90m 37 |\u001b[39m     \u001b[90m// Fill in the form with all required fields\u001b[39m\n \u001b[90m 38 |\u001b[39m     \u001b[36mconst\u001b[39m timestamp \u001b[33m=\u001b[39m \u001b[33mDate\u001b[39m\u001b[33m.\u001b[39mnow()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                            "column": 76,
+                            "line": 35
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n\n  33 |     \n  34 |     // Verify form is displayed\n> 35 |     await expect(page.getByRole(\"heading\", { name: /create.*incident/i })).toBeVisible();\n     |                                                                            ^\n  36 |     \n  37 |     // Fill in the form with all required fields\n  38 |     const timestamp = Date.now();\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:35:76"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:22.001Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                        "column": 76,
+                        "line": 35
+                      }
+                    },
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 8348,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:35:76",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                          "column": 76,
+                          "line": 35
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 33 |\u001b[39m     \n \u001b[90m 34 |\u001b[39m     \u001b[90m// Verify form is displayed\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 35 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create.*incident/i\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 36 |\u001b[39m     \n \u001b[90m 37 |\u001b[39m     \u001b[90m// Fill in the form with all required fields\u001b[39m\n \u001b[90m 38 |\u001b[39m     \u001b[36mconst\u001b[39m timestamp \u001b[33m=\u001b[39m \u001b[33mDate\u001b[39m\u001b[33m.\u001b[39mnow()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                            "column": 76,
+                            "line": 35
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /create.*incident/i })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: /create.*incident/i }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Create Incident</h1> aka getByRole('heading', { name: 'Create Incident' })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">…</h3> aka getByRole('heading', { name: 'Create New Incident' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /create.*incident/i })\u001b[22m\n\n\n  33 |     \n  34 |     // Verify form is displayed\n> 35 |     await expect(page.getByRole(\"heading\", { name: /create.*incident/i })).toBeVisible();\n     |                                                                            ^\n  36 |     \n  37 |     // Fill in the form with all required fields\n  38 |     const timestamp = Date.now();\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:35:76"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-05-17T12:33:47.883Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-create-a-new-incident-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                        "column": 76,
+                        "line": 35
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "589074615abccf633020-69a0986d75e019ef2810",
+              "file": "incidents.spec.ts",
+              "line": 24,
+              "column": 7
+            },
+            {
+              "title": "should view incident details",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 10733,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:02.080Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-view-incident-details-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-view-incident-details-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Management-should-view-incident-details-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "589074615abccf633020-abf73cd0870e046df278",
+              "file": "incidents.spec.ts",
+              "line": 65,
+              "column": 7
+            },
+            {
+              "title": "should display incident list with filters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 8609,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:13.925Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-f5bd3--incident-list-with-filters-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-f5bd3--incident-list-with-filters-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-f5bd3--incident-list-with-filters-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "589074615abccf633020-a30e5e058754ec9fda17",
+              "file": "incidents.spec.ts",
+              "line": 84,
+              "column": 7
+            },
+            {
+              "title": "should navigate back from create form",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 17123,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Incidents' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Incidents' }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Incidents</h1> aka getByRole('heading', { name: 'Incidents', exact: true })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Recent Incidents</h3> aka getByRole('heading', { name: 'Recent Incidents' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Incidents' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Incidents' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Incidents' }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Incidents</h1> aka getByRole('heading', { name: 'Incidents', exact: true })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Recent Incidents</h3> aka getByRole('heading', { name: 'Recent Incidents' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Incidents' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:113:68",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                          "column": 68,
+                          "line": 113
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 111 |\u001b[39m     \n \u001b[90m 112 |\u001b[39m     \u001b[90m// Verify we're back on incidents list\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 113 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Incidents\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 114 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 115 |\u001b[39m\n \u001b[90m 116 |\u001b[39m   test(\u001b[32m\"should navigate back from incident details\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                            "column": 68,
+                            "line": 113
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Incidents' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Incidents' }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Incidents</h1> aka getByRole('heading', { name: 'Incidents', exact: true })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Recent Incidents</h3> aka getByRole('heading', { name: 'Recent Incidents' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Incidents' })\u001b[22m\n\n\n  111 |     \n  112 |     // Verify we're back on incidents list\n> 113 |     await expect(page.getByRole(\"heading\", { name: \"Incidents\" })).toBeVisible();\n      |                                                                    ^\n  114 |   });\n  115 |\n  116 |   test(\"should navigate back from incident details\", async ({ page }) => {\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:113:68"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:22.993Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                        "column": 68,
+                        "line": 113
+                      }
+                    },
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 9549,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Incidents' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Incidents' }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Incidents</h1> aka getByRole('heading', { name: 'Incidents', exact: true })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Recent Incidents</h3> aka getByRole('heading', { name: 'Recent Incidents' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Incidents' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Incidents' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Incidents' }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Incidents</h1> aka getByRole('heading', { name: 'Incidents', exact: true })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Recent Incidents</h3> aka getByRole('heading', { name: 'Recent Incidents' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Incidents' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:113:68",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                          "column": 68,
+                          "line": 113
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 111 |\u001b[39m     \n \u001b[90m 112 |\u001b[39m     \u001b[90m// Verify we're back on incidents list\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 113 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Incidents\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 114 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 115 |\u001b[39m\n \u001b[90m 116 |\u001b[39m   test(\u001b[32m\"should navigate back from incident details\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                            "column": 68,
+                            "line": 113
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Incidents' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Incidents' }) resolved to 2 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Incidents</h1> aka getByRole('heading', { name: 'Incidents', exact: true })\n    2) <h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Recent Incidents</h3> aka getByRole('heading', { name: 'Recent Incidents' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Incidents' })\u001b[22m\n\n\n  111 |     \n  112 |     // Verify we're back on incidents list\n> 113 |     await expect(page.getByRole(\"heading\", { name: \"Incidents\" })).toBeVisible();\n      |                                                                    ^\n  114 |   });\n  115 |\n  116 |   test(\"should navigate back from incident details\", async ({ page }) => {\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts:113:68"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-05-17T12:34:45.033Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-79e2d-igate-back-from-create-form-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\incidents.spec.ts",
+                        "column": 68,
+                        "line": 113
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "589074615abccf633020-3b70ce40b9f334dc60f6",
+              "file": "incidents.spec.ts",
+              "line": 93,
+              "column": 7
+            },
+            {
+              "title": "should navigate back from incident details",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 12616,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:59.886Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-81d22--back-from-incident-details-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-81d22--back-from-incident-details-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\incidents-Incidents-Manage-81d22--back-from-incident-details-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "589074615abccf633020-9b62912ed166ef6fc097",
+              "file": "incidents.spec.ts",
+              "line": 116,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tasks.spec.ts",
+      "file": "tasks.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Tasks Management",
+          "file": "tasks.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display tasks page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10042,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:22:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                          "column": 64,
+                          "line": 22
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m\"Manage and track incident-related tasks\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create task/i\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                            "column": 64,
+                            "line": 22
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  20 |     await page.waitForLoadState('networkidle');\n  21 |     \n> 22 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n     |                                                                ^\n  23 |     await expect(page.getByText(\"Manage and track incident-related tasks\")).toBeVisible();\n  24 |     await expect(page.getByRole(\"button\", { name: /create task/i })).toBeVisible();\n  25 |   });\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:22:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:33:40.955Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                        "column": 64,
+                        "line": 22
+                      }
+                    },
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11945,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:22:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                          "column": 64,
+                          "line": 22
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m\"Manage and track incident-related tasks\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/create task/i\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                            "column": 64,
+                            "line": 22
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  20 |     await page.waitForLoadState('networkidle');\n  21 |     \n> 22 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n     |                                                                ^\n  23 |     await expect(page.getByText(\"Manage and track incident-related tasks\")).toBeVisible();\n  24 |     await expect(page.getByRole(\"button\", { name: /create task/i })).toBeVisible();\n  25 |   });\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:22:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-05-17T12:33:58.108Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-tasks-page-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                        "column": 64,
+                        "line": 22
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-7af1c16e64297b1179d7",
+              "file": "tasks.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "should display task statistics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10011,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:14.956Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-statistics-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-statistics-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-statistics-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-d3cec51d1acd09ef0cfe",
+              "file": "tasks.spec.ts",
+              "line": 27,
+              "column": 7
+            },
+            {
+              "title": "should display task list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 14186,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:25.896Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-list-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-list-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-list-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-6092458dec8875172c26",
+              "file": "tasks.spec.ts",
+              "line": 37,
+              "column": 7
+            },
+            {
+              "title": "should display task cards with metadata",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10674,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:40.527Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-bbeb8-ay-task-cards-with-metadata-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-bbeb8-ay-task-cards-with-metadata-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-bbeb8-ay-task-cards-with-metadata-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-18306d941a75a5959045",
+              "file": "tasks.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "should show empty state when no tasks exist",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8483,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:34:52.104Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-9295b-y-state-when-no-tasks-exist-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-9295b-y-state-when-no-tasks-exist-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-9295b-y-state-when-no-tasks-exist-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-69842111ebaef095d89f",
+              "file": "tasks.spec.ts",
+              "line": 68,
+              "column": 7
+            },
+            {
+              "title": "should display task priority badges",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11462,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:35:02.661Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-priority-badges-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-priority-badges-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-priority-badges-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-6e1b4470c711846f8f05",
+              "file": "tasks.spec.ts",
+              "line": 83,
+              "column": 7
+            },
+            {
+              "title": "should display task status badges",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9461,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:35:14.677Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-status-badges-chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-status-badges-chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-should-display-task-status-badges-chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-a01692d1dca208a7ab1b",
+              "file": "tasks.spec.ts",
+              "line": 99,
+              "column": 7
+            },
+            {
+              "title": "should navigate to tasks from dashboard",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 9080,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:135:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                          "column": 64,
+                          "line": 135
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 133 |\u001b[39m     \n \u001b[90m 134 |\u001b[39m     \u001b[90m// Verify tasks page loaded\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 135 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 136 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 137 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 138 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                            "column": 64,
+                            "line": 135
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  133 |     \n  134 |     // Verify tasks page loaded\n> 135 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n      |                                                                ^\n  136 |   });\n  137 | });\n  138 |\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:135:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-05-17T12:35:24.339Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                        "column": 64,
+                        "line": 135
+                      }
+                    },
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 9367,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:135:64",
+                        "location": {
+                          "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                          "column": 64,
+                          "line": 135
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 133 |\u001b[39m     \n \u001b[90m 134 |\u001b[39m     \u001b[90m// Verify tasks page loaded\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 135 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Tasks\"\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 136 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 137 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 138 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                            "column": 64,
+                            "line": 135
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Tasks' })\nExpected: visible\nError: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved to 3 elements:\n    1) <h1 class=\"text-3xl font-bold text-gray-900\">Tasks</h1> aka getByRole('heading', { name: 'Tasks', exact: true })\n    2) <h3 class=\"tracking-tight text-sm font-medium text-gray-600\">Pending Tasks</h3> aka getByRole('heading', { name: 'Pending Tasks' })\n    3) <h2 class=\"text-xl font-semibold text-gray-900\">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Tasks' })\u001b[22m\n\n\n  133 |     \n  134 |     // Verify tasks page loaded\n> 135 |     await expect(page.getByRole(\"heading\", { name: \"Tasks\" })).toBeVisible({ timeout: 10000 });\n      |                                                                ^\n  136 |   });\n  137 | });\n  138 |\n    at D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts:135:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-05-17T12:35:35.792Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\Hackathon\\regu-ai\\test-results\\tasks-Tasks-Management-sho-124a8-ate-to-tasks-from-dashboard-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\Hackathon\\regu-ai\\tests\\e2e\\tasks.spec.ts",
+                        "column": 64,
+                        "line": 135
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d2d3f88df070d751ab05-540813ce4bcb28b62178",
+              "file": "tasks.spec.ts",
+              "line": 123,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-05-17T12:30:34.866Z",
+    "duration": 311334.577,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  }
+}
