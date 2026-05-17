@@ -20,32 +20,34 @@ jobs:
           POSTGRES_DB=${{ secrets.POSTGRES_DB }}
           POSTGRES_USER=${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
-          DATABASE_URL=postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@postgres:5432/${{ secrets.POSTGRES_DB }}
+          DATABASE_URL=postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@postgres:5432/${{ secrets.POSTGRES_DB }}?schema=public
           AUTH_SECRET=${{ secrets.AUTH_SECRET }}
           AUTH_URL=${{ secrets.AUTH_URL }}
           EOF
 
+          echo "Checking env keys:"
+          grep -E "POSTGRES_DB|POSTGRES_USER|POSTGRES_PASSWORD|DATABASE_URL|AUTH_SECRET|AUTH_URL" .env | sed 's/=.*/=***/'
+
       - name: Stop existing containers
         run: |
-          docker-compose -f docker-compose.yml down || true
+          docker compose --env-file .env -f docker-compose.yml down || true
 
       - name: Pull latest postgres image
         run: |
-          docker-compose -f docker-compose.yml pull postgres || true
+          docker compose --env-file .env -f docker-compose.yml pull postgres || true
 
       - name: Build application
         run: |
-          docker-compose -f docker-compose.yml build --no-cache app
+          docker compose --env-file .env -f docker-compose.yml build --no-cache app
 
       - name: Start database
         run: |
-          docker-compose -f docker-compose.yml up -d postgres
+          docker compose --env-file .env -f docker-compose.yml up -d postgres
 
           echo "Waiting for database to be healthy..."
 
           for i in {1..30}; do
             status=$(docker inspect --format='{{.State.Health.Status}}' reguai-postgres 2>/dev/null || echo "starting")
-
             echo "Postgres status: $status"
 
             if [ "$status" = "healthy" ]; then
@@ -53,26 +55,25 @@ jobs:
               exit 0
             fi
 
-            docker-compose -f docker-compose.yml logs --tail=20 postgres || true
+            docker compose --env-file .env -f docker-compose.yml logs --tail=20 postgres || true
             sleep 3
           done
 
           echo "❌ Database failed to become healthy"
-          docker-compose -f docker-compose.yml logs postgres
+          docker compose --env-file .env -f docker-compose.yml logs postgres
           exit 1
 
       - name: Run database migrations
         run: |
-          docker-compose -f docker-compose.yml run --rm app sh -c "npx prisma migrate deploy && npx prisma generate"
+          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npm run db:generate && npx prisma@6.19.0 migrate deploy"
+
+      - name: Run database seed
+        run: |
+          docker compose --env-file .env -f docker-compose.yml run --rm app sh -c "npm run db:seed"
 
       - name: Start application
         run: |
-          docker-compose -f docker-compose.yml up -d app
-
-      - name: Wait for application to start
-        run: |
-          echo "Waiting for application to be ready..."
-          sleep 15
+          docker compose --env-file .env -f docker-compose.yml up -d app
 
       - name: Health check
         run: |
@@ -91,13 +92,13 @@ jobs:
           done
 
           echo "❌ Health check failed after $max_attempts attempts"
-          docker-compose -f docker-compose.yml logs app
+          docker compose --env-file .env -f docker-compose.yml logs app
           exit 1
 
       - name: Show deployment status
         run: |
           echo "🚀 Deployment completed successfully!"
-          docker-compose -f docker-compose.yml ps
+          docker compose --env-file .env -f docker-compose.yml ps
 
       - name: Cleanup old images
         if: success()
