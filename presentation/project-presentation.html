@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReguAI - Incident Response & Compliance Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            page-break-after: always;
+            background: white;
+        }
+
+        .slide.cover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .slide.cover h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .slide.cover h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .slide.cover p {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2563eb;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #475569;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .highlight {
+            background: #eff6ff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #2563eb;
+            margin: 1rem 0;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slide cover">
+        <h1>ReguAI</h1>
+        <h2>Incident Response & Compliance Workflow Platform</h2>
+        <p>Turning Incident Chaos into Structured Compliance</p>
+    </div>
+
+    <div class="slide">
+        <h1>The Problem</h1>
+        <p style="font-size: 1.8rem; margin-bottom: 2rem;"><span class="emoji">🔥</span><strong>Production incidents are
+                chaotic and unstructured</strong></p>
+        <ul>
+            <li><span class="emoji">📊</span>Logs scattered across multiple systems</li>
+            <li><span class="emoji">❓</span>Unclear response ownership and accountability</li>
+            <li><span class="emoji">⏰</span>Stakeholders need constant updates</li>
+            <li><span class="emoji">📝</span>Post-mortems happen too late or not at all</li>
+            <li><span class="emoji">⚖️</span>Compliance requirements demand audit trails</li>
+            <li><span class="emoji">💼</span>Teams waste time on manual documentation</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h1>Our Solution</h1>
+        <p style="font-size: 1.8rem; margin-bottom: 2rem;"><span class="emoji">✅</span><strong>Structured incident
+                workflow from detection to resolution</strong></p>
+        <ul>
+            <li><span class="emoji">🤖</span>Automated report generation with rule-based intelligence</li>
+            <li><span class="emoji">📋</span>Task tracking with ownership and priorities</li>
+            <li><span class="emoji">🔍</span>Complete audit trail for compliance</li>
+            <li><span class="emoji">📄</span>Export-ready post-mortem documentation</li>
+            <li><span class="emoji">📊</span>Real-time dashboard with metrics and insights</li>
+            <li><span class="emoji">🔐</span>Secure authentication and session management</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h1>Core Features</h1>
+        <div class="two-column">
+            <div>
+                <h3>Incident Management</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Create and track incidents</li>
+                    <li>Severity classification</li>
+                    <li>Status workflow tracking</li>
+                    <li>Impact assessment</li>
+                </ul>
+                <h3 style="margin-top: 2rem;">Report Generation</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Risk classification</li>
+                    <li>Timeline reconstruction</li>
+                    <li>Response checklist</li>
+                    <li>Technical action plans</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Task Management</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Assign response tasks</li>
+                    <li>Priority management</li>
+                    <li>Status tracking</li>
+                    <li>Due date monitoring</li>
+                </ul>
+                <h3 style="margin-top: 2rem;">Compliance & Export</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Complete audit trails</li>
+                    <li>Markdown export</li>
+                    <li>Stakeholder summaries</li>
+                    <li>Post-mortem reports</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h1>System Architecture</h1>
+        <p style="font-size: 1.5rem; margin-bottom: 2rem;"><strong>Modern Full-Stack TypeScript Application</strong></p>
+        <ul>
+            <li><strong>Frontend:</strong> Next.js 16 + React 19 + TypeScript</li>
+            <li><strong>Backend:</strong> Next.js API Routes with modular services</li>
+            <li><strong>Database:</strong> PostgreSQL with Prisma ORM</li>
+            <li><strong>Authentication:</strong> Auth.js v5 with JWT sessions</li>
+            <li><strong>State Management:</strong> TanStack React Query</li>
+            <li><strong>UI Framework:</strong> Tailwind CSS + shadcn/ui</li>
+            <li><strong>Validation:</strong> Zod schemas</li>
+            <li><strong>Deployment:</strong> Docker Compose</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h1>Technical Stack</h1>
+        <div class="two-column">
+            <div>
+                <h3>Core Technologies</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Next.js 16.2.6</li>
+                    <li>React 19.2.6</li>
+                    <li>TypeScript 6.0.3</li>
+                    <li>Tailwind CSS 4.3.0</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;">Backend</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Prisma 6.19.0</li>
+                    <li>PostgreSQL</li>
+                    <li>Zod 4.4.3</li>
+                    <li>Auth.js 5.0.0-beta.31</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Frontend Libraries</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>TanStack React Query 5.100.10</li>
+                    <li>Lucide React</li>
+                    <li>shadcn/ui components</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;">Development</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>ESLint 9.39.4</li>
+                    <li>Docker Compose</li>
+                    <li>tsx</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h1>Authentication & Security</h1>
+        <p style="font-size: 1.5rem; margin-bottom: 2rem;"><span class="emoji">🔐</span><strong>Enterprise-grade
+                security</strong></p>
+        <ul>
+            <li>Auth.js v5 with credentials provider</li>
+            <li>JWT-based session management</li>
+            <li>Protected routes with middleware</li>
+            <li>HTTP-only cookies</li>
+            <li>Zod validation for all inputs</li>
+            <li>Raw log sanitization</li>
+            <li>Input length limits</li>
+            <li>Comprehensive audit trail</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h1>Automated Report Generation</h1>
+        <p style="font-size: 1.5rem; margin-bottom: 2rem;"><strong>Rule-based generation for MVP stability</strong></p>
+        <div class="highlight">
+            <h3>Generated Sections:</h3>
+            <ul style="font-size: 1.1rem;">
+                <li>Risk Classification - Business, technical, compliance risk</li>
+                <li>Timeline - Event reconstruction</li>
+                <li>Response Checklist - Action items</li>
+                <li>Technical Action Plan - Team tasks</li>
+                <li>Stakeholder Summary - Executive overview</li>
+                <li>Post-Mortem Report - Audit-ready docs</li>
+            </ul>
+        </div>
+        <p style="font-size: 1.3rem; margin-top: 2rem;"><span class="emoji">✨</span><strong>Auto-generation on first
+                access</strong></p>
+    </div>
+
+    <div class="slide">
+        <h1>Key Improvements</h1>
+        <ul>
+            <li><span class="emoji">✅</span>Auth.js v5 integration - Modern authentication</li>
+            <li><span class="emoji">✅</span>Proxy route protection - Secure middleware</li>
+            <li><span class="emoji">✅</span>Auto-report generation - Seamless UX</li>
+            <li><span class="emoji">✅</span>React Query migration - Optimized fetching</li>
+            <li><span class="emoji">✅</span>Component refactoring - Better performance</li>
+            <li><span class="emoji">✅</span>Incident list optimization - Memoization</li>
+            <li><span class="emoji">✅</span>Export functionality - Download reports</li>
+            <li><span class="emoji">✅</span>Comprehensive docs - 15+ detailed files</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h1>Scalability & Future</h1>
+        <div class="two-column">
+            <div>
+                <h3>Current Architecture</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Stateless JWT sessions</li>
+                    <li>Modular service architecture</li>
+                    <li>Docker Compose</li>
+                    <li>Horizontal scaling ready</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Future Enhancements</h3>
+                <ul style="font-size: 1.1rem;">
+                    <li>Background job queue</li>
+                    <li>WebSocket real-time updates</li>
+                    <li>AI-powered suggestions</li>
+                    <li>Multi-tenant support</li>
+                    <li>Advanced RBAC</li>
+                    <li>PDF export</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h1>Demo Flow</h1>
+        <ol style="list-style: decimal; padding-left: 2rem;">
+            <li style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>Login</strong> - Secure authentication</li>
+            <li style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>Dashboard</strong> - View metrics and incidents
+            </li>
+            <li style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>Create Incident</strong> - Report new issue</li>
+            <li style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>View Details</strong> - Auto report generation
+            </li>
+            <li style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>Task Management</strong> - Assign and track</li>
+            <li style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>Audit Trail</strong> - Complete history</li>
+            <li style="font-size: 1.3rem; margin-bottom: 1rem;"><strong>Export</strong> - Download markdown</li>
+        </ol>
+        <div class="highlight" style="margin-top: 2rem;">
+            <p style="font-size: 1.2rem;"><strong>Demo Credentials:</strong> demo@reguai.local / demo-password</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h1>Built with IBM Bob</h1>
+        <p style="font-size: 1.5rem; margin-bottom: 2rem;"><span class="emoji">🤖</span><strong>IBM Bob assisted
+                with:</strong></p>
+        <ul>
+            <li>Architecture planning and design decisions</li>
+            <li>Database schema design and optimization</li>
+            <li>Backend module structure and organization</li>
+            <li>Validation strategy and implementation</li>
+            <li>Report generator architecture</li>
+            <li>Security review and best practices</li>
+            <li>Comprehensive documentation</li>
+            <li>Iterative refinement and debugging</li>
+        </ul>
+        <p style="font-size: 1.3rem; margin-top: 2rem;"><strong>Result: Production-ready platform in accelerated
+                timeline</strong></p>
+    </div>
+
+    <div class="slide cover">
+        <h1>Thank You</h1>
+        <h2>ReguAI</h2>
+        <p>Turning Incident Chaos into Structured Compliance</p>
+        <div style="margin-top: 3rem; font-size: 1.2rem;">
+            <p>Demo: http://localhost:3000</p>
+            <p>Email: demo@reguai.local</p>
+            <p>Password: demo-password</p>
+        </div>
+    </div>
+
+    <script>
+        // Print to PDF: Press Ctrl+P or Cmd+P
+        // Navigate slides: Arrow keys or Page Up/Down
+        document.addEventListener('keydown', function (e) {
+            const slides = document.querySelectorAll('.slide');
+            let current = 0;
+            slides.forEach((slide, index) => {
+                if (slide.getBoundingClientRect().top >= 0 && slide.getBoundingClientRect().top < window.innerHeight) {
+                    current = index;
+                }
+            });
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') {
+                if (current < slides.length - 1) {
+                    slides[current + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+                if (current > 0) {
+                    slides[current - 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
