@@ -13,9 +13,9 @@ export default defineConfig({
   ],
   use: {
     baseURL: "http://localhost:3001",
-    video: "retain-on-failure",
-    screenshot: "only-on-failure",
-    trace: "retain-on-failure",
+    video: "on",
+    screenshot: "on",
+    trace: "on",
     actionTimeout: 10_000,
     navigationTimeout: 30_000,
   },

@@ -7,7 +7,7 @@
 # Test info
 
 - Name: incidents.spec.ts >> Incidents Management >> should navigate back from create form
-- Location: tests\e2e\incidents.spec.ts:92:7
+- Location: tests\e2e\incidents.spec.ts:93:7
 
 # Error details
 
@@ -141,18 +141,6 @@ Call log:
 # Test source
 
 ```ts
-  1   | import { test, expect, Page } from "@playwright/test";
-  2   | 
-  3   | // Helper function to login
-  4   | async function login(page: Page) {
-  5   |   await page.goto("/login");
-  6   |   await page.getByLabel("Email").fill("demo@reguai.local");
-  7   |   await page.getByLabel("Password").fill("demo-password");
-  8   |   await page.getByRole("button", { name: /sign in/i }).click();
-  9   |   await page.waitForURL("/");
-  10  | }
-  11  | 
-  12  | test.describe("Incidents Management", () => {
   13  |   test.beforeEach(async ({ page }) => {
   14  |     await login(page);
   15  |     await page.goto("/incidents");
@@ -165,104 +153,117 @@ Call log:
   22  |   });
   23  | 
   24  |   test("should create a new incident", async ({ page }) => {
-  25  |     // Click create incident button
-  26  |     await page.getByRole("button", { name: /create incident/i }).click();
+  25  |     // Wait for page to be fully loaded
+  26  |     await page.waitForLoadState('networkidle');
   27  |     
-  28  |     // Verify form is displayed
-  29  |     await expect(page.getByRole("heading", { name: "Create Incident" })).toBeVisible();
+  28  |     // Click create incident button
+  29  |     await page.getByRole("button", { name: /create incident/i }).click();
   30  |     
-  31  |     // Fill in the form
-  32  |     const timestamp = Date.now();
-  33  |     await page.getByLabel(/title/i).fill(`Test Incident ${timestamp}`);
-  34  |     await page.getByLabel(/description/i).fill("This is a test incident created by E2E tests");
-  35  |     
-  36  |     // Select severity
-  37  |     const severitySelect = page.locator('select, [role="combobox"]').filter({ hasText: /severity/i }).first();
-  38  |     if (await severitySelect.isVisible()) {
-  39  |       await severitySelect.selectOption({ label: "High" });
-  40  |     }
+  31  |     // Wait for form to load
+  32  |     await page.waitForLoadState('networkidle');
+  33  |     
+  34  |     // Verify form is displayed
+  35  |     await expect(page.getByRole("heading", { name: /create.*incident/i })).toBeVisible();
+  36  |     
+  37  |     // Fill in the form with all required fields
+  38  |     const timestamp = Date.now();
+  39  |     await page.getByLabel(/title/i).fill(`Test Incident ${timestamp}`);
+  40  |     await page.getByLabel(/description/i).fill("This is a test incident created by E2E tests to verify the incident creation functionality works correctly.");
   41  |     
-  42  |     // Select category
-  43  |     const categorySelect = page.locator('select, [role="combobox"]').filter({ hasText: /category/i }).first();
-  44  |     if (await categorySelect.isVisible()) {
-  45  |       await categorySelect.selectOption({ index: 1 });
-  46  |     }
+  42  |     // Select severity using direct selector
+  43  |     await page.locator('select[name="severity"]').selectOption('HIGH');
+  44  |     
+  45  |     // Select category using direct selector
+  46  |     await page.locator('select[name="category"]').selectOption('SECURITY');
   47  |     
   48  |     // Fill affected systems
-  49  |     const affectedSystemsInput = page.getByLabel(/affected system/i);
-  50  |     if (await affectedSystemsInput.isVisible()) {
-  51  |       await affectedSystemsInput.fill("API Gateway");
-  52  |     }
+  49  |     await page.locator('input[name="affectedSystems"]').fill("API Gateway, Database, Payment Service");
+  50  |     
+  51  |     // Wait a moment for form validation
+  52  |     await page.waitForTimeout(500);
   53  |     
   54  |     // Submit the form
-  55  |     await page.getByRole("button", { name: /create|submit/i }).click();
+  55  |     await page.getByRole("button", { name: /create incident/i }).click();
   56  |     
   57  |     // Wait for redirect back to list
-  58  |     await page.waitForURL("/incidents", { timeout: 10000 });
-  59  |     
-  60  |     // Verify incident appears in list
-  61  |     await expect(page.getByText(`Test Incident ${timestamp}`)).toBeVisible({ timeout: 10000 });
-  62  |   });
-  63  | 
-  64  |   test("should view incident details", async ({ page }) => {
-  65  |     // Wait for incidents to load
-  66  |     await page.waitForTimeout(2000);
-  67  |     
-  68  |     // Click on first incident if available
-  69  |     const firstIncident = page.locator('[data-testid="incident-card"], .hover\\:shadow-md').first();
-  70  |     
-  71  |     if (await firstIncident.isVisible()) {
-  72  |       await firstIncident.click();
-  73  |       
-  74  |       // Verify detail page
-  75  |       await expect(page.getByRole("heading", { name: "Incident Details" })).toBeVisible();
-  76  |       await expect(page.getByText("View and manage incident information")).toBeVisible();
-  77  |       
-  78  |       // Check tabs are present
-  79  |       await expect(page.getByRole("tab", { name: /overview|details/i })).toBeVisible();
-  80  |     }
-  81  |   });
-  82  | 
-  83  |   test("should display incident list with filters", async ({ page }) => {
-  84  |     // Wait for incidents to load
-  85  |     await page.waitForTimeout(2000);
-  86  |     
-  87  |     // Check if incident list or empty state is visible
-  88  |     const pageContent = page.locator("main, [role='main']");
-  89  |     await expect(pageContent).toBeVisible();
-  90  |   });
-  91  | 
-  92  |   test("should navigate back from create form", async ({ page }) => {
-  93  |     // Click create incident button
-  94  |     await page.getByRole("button", { name: /create incident/i }).click();
-  95  |     
-  96  |     // Click back button
-  97  |     await page.getByRole("button", { name: /back to list/i }).click();
-  98  |     
-  99  |     // Verify we're back on incidents list
-> 100 |     await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible();
+  58  |     await page.waitForURL("/incidents", { timeout: 15000 });
+  59  |     await page.waitForLoadState('networkidle');
+  60  |     
+  61  |     // Verify incident appears in list
+  62  |     await expect(page.getByText(`Test Incident ${timestamp}`)).toBeVisible({ timeout: 10000 });
+  63  |   });
+  64  | 
+  65  |   test("should view incident details", async ({ page }) => {
+  66  |     // Wait for incidents to load
+  67  |     await page.waitForTimeout(2000);
+  68  |     
+  69  |     // Click on first incident if available
+  70  |     const firstIncident = page.locator('[data-testid="incident-card"], .hover\\:shadow-md').first();
+  71  |     
+  72  |     if (await firstIncident.isVisible()) {
+  73  |       await firstIncident.click();
+  74  |       
+  75  |       // Verify detail page
+  76  |       await expect(page.getByRole("heading", { name: "Incident Details" })).toBeVisible();
+  77  |       await expect(page.getByText("View and manage incident information")).toBeVisible();
+  78  |       
+  79  |       // Check tabs are present
+  80  |       await expect(page.getByRole("tab", { name: /overview|details/i })).toBeVisible();
+  81  |     }
+  82  |   });
+  83  | 
+  84  |   test("should display incident list with filters", async ({ page }) => {
+  85  |     // Wait for incidents to load
+  86  |     await page.waitForTimeout(2000);
+  87  |     
+  88  |     // Check if incident list or empty state is visible
+  89  |     const pageContent = page.locator("main, [role='main']");
+  90  |     await expect(pageContent).toBeVisible();
+  91  |   });
+  92  | 
+  93  |   test("should navigate back from create form", async ({ page }) => {
+  94  |     // Wait for page to be fully loaded
+  95  |     await page.waitForLoadState('networkidle');
+  96  |     
+  97  |     // Click create incident button
+  98  |     await page.getByRole("button", { name: /create incident/i }).click();
+  99  |     
+  100 |     // Wait for form to load
+  101 |     await page.waitForLoadState('networkidle');
+  102 |     
+  103 |     // Wait for cancel button to be visible
+  104 |     await page.waitForSelector('button:has-text("Cancel")', { state: 'visible', timeout: 5000 });
+  105 |     
+  106 |     // Click cancel button
+  107 |     await page.getByRole("button", { name: /cancel/i }).click();
+  108 |     
+  109 |     // Wait for navigation
+  110 |     await page.waitForLoadState('networkidle');
+  111 |     
+  112 |     // Verify we're back on incidents list
+> 113 |     await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible();
       |                                                                    ^ Error: expect(locator).toBeVisible() failed
-  101 |   });
-  102 | 
-  103 |   test("should navigate back from incident details", async ({ page }) => {
-  104 |     // Wait for incidents to load
-  105 |     await page.waitForTimeout(2000);
-  106 |     
-  107 |     // Click on first incident if available
-  108 |     const firstIncident = page.locator('[data-testid="incident-card"], .hover\\:shadow-md').first();
-  109 |     
-  110 |     if (await firstIncident.isVisible()) {
-  111 |       await firstIncident.click();
-  112 |       
-  113 |       // Click back button
-  114 |       await page.getByRole("button", { name: /back to list/i }).click();
-  115 |       
-  116 |       // Verify we're back on incidents list
-  117 |       await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible();
-  118 |     }
-  119 |   });
-  120 | });
-  121 | 
-  122 | // Made with Bob
-  123 | 
+  114 |   });
+  115 | 
+  116 |   test("should navigate back from incident details", async ({ page }) => {
+  117 |     // Wait for incidents to load
+  118 |     await page.waitForTimeout(2000);
+  119 |     
+  120 |     // Click on first incident if available
+  121 |     const firstIncident = page.locator('[data-testid="incident-card"], .hover\\:shadow-md').first();
+  122 |     
+  123 |     if (await firstIncident.isVisible()) {
+  124 |       await firstIncident.click();
+  125 |       
+  126 |       // Click back button
+  127 |       await page.getByRole("button", { name: /back to list/i }).click();
+  128 |       
+  129 |       // Verify we're back on incidents list
+  130 |       await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible();
+  131 |     }
+  132 |   });
+  133 | });
+  134 | 
+  135 | // Made with Bob
+  136 | 
 ```

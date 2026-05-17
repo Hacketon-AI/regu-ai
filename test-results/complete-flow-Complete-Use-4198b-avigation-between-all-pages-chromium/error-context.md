@@ -7,7 +7,7 @@
 # Test info
 
 - Name: complete-flow.spec.ts >> Complete User Flow >> should handle navigation between all pages
-- Location: tests\e2e\complete-flow.spec.ts:75:7
+- Location: tests\e2e\complete-flow.spec.ts:74:7
 
 # Error details
 
@@ -22,7 +22,7 @@ Error: strict mode violation: getByRole('heading', { name: 'Tasks' }) resolved t
     3) <h2 class="text-xl font-semibold text-gray-900">All Tasks</h2> aka getByRole('heading', { name: 'All Tasks' })
 
 Call log:
-  - Expect "toBeVisible" with timeout 5000ms
+  - Expect "toBeVisible" with timeout 10000ms
   - waiting for getByRole('heading', { name: 'Tasks' })
 
 ```
@@ -181,130 +181,134 @@ Call log:
   5   |   test("should complete full incident management workflow", async ({ page }) => {
   6   |     // Step 1: Login
   7   |     await login(page);
-  8   |     await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
-  9   |     
-  10  |     // Step 2: Navigate to incidents page
-  11  |     await page.getByRole("link", { name: /incidents/i }).click();
-  12  |     await page.waitForURL("/incidents");
-  13  |     await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible();
-  14  |     
-  15  |     // Step 3: Create a new incident
-  16  |     await page.getByRole("button", { name: /create incident/i }).click();
-  17  |     await expect(page.getByRole("heading", { name: "Create Incident" })).toBeVisible();
-  18  |     
-  19  |     const timestamp = Date.now();
-  20  |     const incidentTitle = `E2E Test Incident ${timestamp}`;
+  8   |     await page.waitForLoadState('networkidle');
+  9   |     await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
+  10  |     
+  11  |     // Step 2: Navigate to incidents page
+  12  |     await page.getByRole("link", { name: /incidents/i }).click();
+  13  |     await page.waitForURL("/incidents", { timeout: 10000 });
+  14  |     await page.waitForLoadState('networkidle');
+  15  |     await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible();
+  16  |     
+  17  |     // Step 3: Create a new incident
+  18  |     await page.getByRole("button", { name: /create incident/i }).click();
+  19  |     await page.waitForLoadState('networkidle');
+  20  |     await expect(page.getByRole("heading", { name: /create.*incident/i })).toBeVisible();
   21  |     
-  22  |     await page.getByLabel(/title/i).fill(incidentTitle);
-  23  |     await page.getByLabel(/description/i).fill("Complete workflow test incident with full details");
+  22  |     const timestamp = Date.now();
+  23  |     const incidentTitle = `E2E Test Incident ${timestamp}`;
   24  |     
-  25  |     // Select severity
-  26  |     const severitySelect = page.locator('select, [role="combobox"]').filter({ hasText: /severity/i }).first();
-  27  |     if (await severitySelect.isVisible()) {
-  28  |       await severitySelect.selectOption({ label: "High" });
-  29  |     }
-  30  |     
-  31  |     // Select category
-  32  |     const categorySelect = page.locator('select, [role="combobox"]').filter({ hasText: /category/i }).first();
-  33  |     if (await categorySelect.isVisible()) {
-  34  |       await categorySelect.selectOption({ index: 1 });
-  35  |     }
-  36  |     
-  37  |     // Fill affected systems
-  38  |     const affectedSystemsInput = page.getByLabel(/affected system/i);
-  39  |     if (await affectedSystemsInput.isVisible()) {
-  40  |       await affectedSystemsInput.fill("Payment Gateway");
-  41  |     }
-  42  |     
-  43  |     // Submit the form
-  44  |     await page.getByRole("button", { name: /create|submit/i }).click();
-  45  |     await page.waitForURL("/incidents", { timeout: 10000 });
-  46  |     
-  47  |     // Step 4: Verify incident appears in list
-  48  |     await expect(page.getByText(incidentTitle)).toBeVisible({ timeout: 10000 });
-  49  |     
-  50  |     // Step 5: View incident details
-  51  |     await page.getByText(incidentTitle).click();
-  52  |     await expect(page.getByRole("heading", { name: "Incident Details" })).toBeVisible();
-  53  |     
-  54  |     // Step 6: Check incident tabs
-  55  |     const overviewTab = page.getByRole("tab", { name: /overview|details/i });
-  56  |     if (await overviewTab.isVisible()) {
-  57  |       await overviewTab.click();
-  58  |     }
-  59  |     
-  60  |     // Step 7: Navigate back to dashboard
-  61  |     await page.getByRole("link", { name: /dashboard/i }).click();
-  62  |     await page.waitForURL("/");
-  63  |     await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
-  64  |     
-  65  |     // Step 8: Check tasks page
-  66  |     await page.getByRole("link", { name: /tasks/i }).click();
-  67  |     await page.waitForURL("/tasks");
-  68  |     await expect(page.getByRole("heading", { name: "Tasks" })).toBeVisible();
-  69  |     
-  70  |     // Step 9: Return to dashboard
-  71  |     await page.getByRole("link", { name: /dashboard/i }).click();
-  72  |     await page.waitForURL("/");
-  73  |   });
-  74  | 
-  75  |   test("should handle navigation between all pages", async ({ page }) => {
-  76  |     await login(page);
+  25  |     await page.getByLabel(/title/i).fill(incidentTitle);
+  26  |     await page.getByLabel(/description/i).fill("Complete workflow test incident with full details for E2E testing");
+  27  |     
+  28  |     // Use direct selectors for form fields
+  29  |     await page.locator('select[name="severity"]').selectOption('HIGH');
+  30  |     await page.locator('select[name="category"]').selectOption('SECURITY');
+  31  |     await page.locator('input[name="affectedSystems"]').fill("Payment Gateway, API Server");
+  32  |     
+  33  |     // Wait for form validation
+  34  |     await page.waitForTimeout(500);
+  35  |     
+  36  |     // Submit the form
+  37  |     await page.getByRole("button", { name: /create incident/i }).click();
+  38  |     await page.waitForURL("/incidents", { timeout: 15000 });
+  39  |     await page.waitForLoadState('networkidle');
+  40  |     
+  41  |     // Step 4: Verify incident appears in list
+  42  |     await expect(page.getByText(incidentTitle)).toBeVisible({ timeout: 10000 });
+  43  |     
+  44  |     // Step 5: View incident details
+  45  |     await page.getByText(incidentTitle).click();
+  46  |     await page.waitForLoadState('networkidle');
+  47  |     await expect(page.getByRole("heading", { name: "Incident Details" })).toBeVisible();
+  48  |     
+  49  |     // Step 6: Check incident tabs
+  50  |     const overviewTab = page.getByRole("tab", { name: /overview|details/i });
+  51  |     if (await overviewTab.isVisible()) {
+  52  |       await overviewTab.click();
+  53  |       await page.waitForTimeout(500);
+  54  |     }
+  55  |     
+  56  |     // Step 7: Navigate back to dashboard
+  57  |     await page.getByRole("link", { name: /dashboard/i }).click();
+  58  |     await page.waitForURL("/", { timeout: 10000 });
+  59  |     await page.waitForLoadState('networkidle');
+  60  |     await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
+  61  |     
+  62  |     // Step 8: Check tasks page
+  63  |     await page.getByRole("link", { name: /tasks/i }).click();
+  64  |     await page.waitForURL("/tasks", { timeout: 10000 });
+  65  |     await page.waitForLoadState('networkidle');
+  66  |     await expect(page.getByRole("heading", { name: "Tasks" })).toBeVisible({ timeout: 10000 });
+  67  |     
+  68  |     // Step 9: Return to dashboard
+  69  |     await page.getByRole("link", { name: /dashboard/i }).click();
+  70  |     await page.waitForURL("/", { timeout: 10000 });
+  71  |     await page.waitForLoadState('networkidle');
+  72  |   });
+  73  | 
+  74  |   test("should handle navigation between all pages", async ({ page }) => {
+  75  |     await login(page);
+  76  |     await page.waitForLoadState('networkidle');
   77  |     
   78  |     // Dashboard -> Incidents
   79  |     await page.getByRole("link", { name: /incidents/i }).click();
-  80  |     await page.waitForURL("/incidents");
-  81  |     await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible();
-  82  |     
-  83  |     // Incidents -> Tasks
-  84  |     await page.getByRole("link", { name: /tasks/i }).click();
-  85  |     await page.waitForURL("/tasks");
-> 86  |     await expect(page.getByRole("heading", { name: "Tasks" })).toBeVisible();
+  80  |     await page.waitForURL("/incidents", { timeout: 10000 });
+  81  |     await page.waitForLoadState('networkidle');
+  82  |     await expect(page.getByRole("heading", { name: "Incidents" })).toBeVisible({ timeout: 10000 });
+  83  |     
+  84  |     // Incidents -> Tasks
+  85  |     await page.getByRole("link", { name: /tasks/i }).click();
+  86  |     await page.waitForURL("/tasks", { timeout: 10000 });
+  87  |     await page.waitForLoadState('networkidle');
+> 88  |     await expect(page.getByRole("heading", { name: "Tasks" })).toBeVisible({ timeout: 10000 });
       |                                                                ^ Error: expect(locator).toBeVisible() failed
-  87  |     
-  88  |     // Tasks -> Dashboard
-  89  |     await page.getByRole("link", { name: /dashboard/i }).click();
-  90  |     await page.waitForURL("/");
-  91  |     await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
-  92  |     
-  93  |     // Dashboard -> Settings (if available)
-  94  |     const settingsLink = page.getByRole("link", { name: /settings/i });
-  95  |     if (await settingsLink.isVisible()) {
-  96  |       await settingsLink.click();
-  97  |       await page.waitForURL("/settings");
-  98  |     }
-  99  |   });
-  100 | 
-  101 |   test("should display consistent UI elements across pages", async ({ page }) => {
-  102 |     await login(page);
-  103 |     
-  104 |     // Check sidebar on dashboard
-  105 |     await expect(page.getByText("ReguAI")).toBeVisible();
-  106 |     
-  107 |     // Navigate to incidents
-  108 |     await page.goto("/incidents");
+  89  |     
+  90  |     // Tasks -> Dashboard
+  91  |     await page.getByRole("link", { name: /dashboard/i }).click();
+  92  |     await page.waitForURL("/", { timeout: 10000 });
+  93  |     await page.waitForLoadState('networkidle');
+  94  |     await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible({ timeout: 10000 });
+  95  |     
+  96  |     // Dashboard -> Settings (if available)
+  97  |     const settingsLink = page.getByRole("link", { name: /settings/i });
+  98  |     if (await settingsLink.isVisible()) {
+  99  |       await settingsLink.click();
+  100 |       await page.waitForURL("/settings", { timeout: 10000 });
+  101 |       await page.waitForLoadState('networkidle');
+  102 |     }
+  103 |   });
+  104 | 
+  105 |   test("should display consistent UI elements across pages", async ({ page }) => {
+  106 |     await login(page);
+  107 |     
+  108 |     // Check sidebar on dashboard
   109 |     await expect(page.getByText("ReguAI")).toBeVisible();
   110 |     
-  111 |     // Navigate to tasks
-  112 |     await page.goto("/tasks");
+  111 |     // Navigate to incidents
+  112 |     await page.goto("/incidents");
   113 |     await expect(page.getByText("ReguAI")).toBeVisible();
-  114 |   });
-  115 | 
-  116 |   test("should handle form validation", async ({ page }) => {
-  117 |     await login(page);
-  118 |     await page.goto("/incidents");
-  119 |     
-  120 |     // Open create form
-  121 |     await page.getByRole("button", { name: /create incident/i }).click();
-  122 |     
-  123 |     // Try to submit empty form
-  124 |     await page.getByRole("button", { name: /create|submit/i }).click();
-  125 |     
-  126 |     // Form should still be visible (validation prevents submission)
-  127 |     await expect(page.getByRole("heading", { name: "Create Incident" })).toBeVisible();
-  128 |   });
-  129 | });
-  130 | 
-  131 | // Made with Bob
-  132 | 
+  114 |     
+  115 |     // Navigate to tasks
+  116 |     await page.goto("/tasks");
+  117 |     await expect(page.getByText("ReguAI")).toBeVisible();
+  118 |   });
+  119 | 
+  120 |   test("should handle form validation", async ({ page }) => {
+  121 |     await login(page);
+  122 |     await page.goto("/incidents");
+  123 |     
+  124 |     // Open create form
+  125 |     await page.getByRole("button", { name: /create incident/i }).click();
+  126 |     
+  127 |     // Try to submit empty form
+  128 |     await page.getByRole("button", { name: /create|submit/i }).click();
+  129 |     
+  130 |     // Form should still be visible (validation prevents submission)
+  131 |     await expect(page.getByRole("heading", { name: "Create Incident" })).toBeVisible();
+  132 |   });
+  133 | });
+  134 | 
+  135 | // Made with Bob
+  136 | 
 ```
