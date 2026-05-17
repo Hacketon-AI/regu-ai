@@ -154,6 +154,33 @@ export default function IncidentsPage() {
     }
   };
 
+  const handleDownloadReport = async () => {
+    if (!selectedIncidentId) return;
+
+    try {
+      const response = await fetch(
+        `/api/incidents/${selectedIncidentId}/export/markdown`,
+      );
+      if (!response.ok) {
+        console.error("Failed to download report");
+        return;
+      }
+
+      const markdown = await response.text();
+      const blob = new Blob([markdown], { type: "text/markdown" });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `incident-${selectedIncidentId}-report.md`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    }
+  };
+
   return (
     <DashboardLayout>
       <div className="space-y-8">
@@ -314,6 +341,7 @@ export default function IncidentsPage() {
                         },
                       ],
                     }}
+                    onDownload={handleDownloadReport}
                   />
                 ) : (
                   <div className="text-center py-8 text-gray-500">

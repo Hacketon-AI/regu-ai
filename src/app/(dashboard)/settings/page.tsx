@@ -1,18 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Bell, Shield, Database } from "lucide-react";
+import { User, Bell, Shield, Database, LogOut, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type TabValue = "profile" | "notifications" | "security" | "integrations";
 
 export default function SettingsPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabValue>("profile");
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const tabs = [
     { value: "profile" as const, label: "Profile", icon: User },
@@ -21,15 +26,67 @@ export default function SettingsPage() {
     { value: "integrations" as const, label: "Integrations", icon: Database },
   ];
 
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    await signOut({ redirect: false });
+    router.push("/login");
+    router.refresh();
+  };
+
+  if (status === "loading") {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center">
+            <Loader2 className="w-8 h-8 animate-spin text-blue-600 mx-auto mb-4" />
+            <p className="text-gray-600">Loading settings...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
+
+  if (!session?.user) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center">
+            <p className="text-gray-600">No user session found</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
+
   return (
     <DashboardLayout>
       <div className="space-y-8">
         {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-          <p className="text-gray-600 mt-1">
-            Manage your account and application preferences
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
+            <p className="text-gray-600 mt-1">
+              Manage your account and application preferences
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+            className="gap-2"
+          >
+            {isLoggingOut ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Logging out...
+              </>
+            ) : (
+              <>
+                <LogOut className="w-4 h-4" />
+                Logout
+              </>
+            )}
+          </Button>
         </div>
 
         {/* Settings Tabs */}
@@ -63,35 +120,47 @@ export default function SettingsPage() {
                 <CardTitle>Profile Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name</Label>
+                  <Input
+                    id="name"
+                    value={session.user.name || ""}
+                    disabled
+                    className="bg-gray-50"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="john.doe@example.com"
+                    value={session.user.email || ""}
+                    disabled
+                    className="bg-gray-50"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="role">Role</Label>
-                  <Input id="role" placeholder="Engineering Manager" />
+                  <Input
+                    id="role"
+                    value={session.user.role || ""}
+                    disabled
+                    className="bg-gray-50"
+                  />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="department">Department</Label>
-                  <Input id="department" placeholder="Engineering" />
+                  <Label htmlFor="userId">User ID</Label>
+                  <Input
+                    id="userId"
+                    value={session.user.id || ""}
+                    disabled
+                    className="bg-gray-50 font-mono text-sm"
+                  />
                 </div>
-                <div className="flex justify-end gap-3">
-                  <Button variant="outline">Cancel</Button>
-                  <Button>Save Changes</Button>
+                <div className="pt-4 border-t">
+                  <p className="text-sm text-gray-600">
+                    Profile information is read-only in this demo version.
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -164,19 +233,19 @@ export default function SettingsPage() {
                         <Label htmlFor="currentPassword">
                           Current Password
                         </Label>
-                        <Input id="currentPassword" type="password" />
+                        <Input id="currentPassword" type="password" disabled />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="newPassword">New Password</Label>
-                        <Input id="newPassword" type="password" />
+                        <Input id="newPassword" type="password" disabled />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="confirmPassword">
                           Confirm Password
                         </Label>
-                        <Input id="confirmPassword" type="password" />
+                        <Input id="confirmPassword" type="password" disabled />
                       </div>
-                      <Button>Update Password</Button>
+                      <Button disabled>Update Password</Button>
                     </div>
                   </div>
                   <div className="pt-4 border-t">
@@ -186,7 +255,9 @@ export default function SettingsPage() {
                     <p className="text-sm text-gray-600 mb-3">
                       Add an extra layer of security to your account
                     </p>
-                    <Button variant="outline">Enable 2FA</Button>
+                    <Button variant="outline" disabled>
+                      Enable 2FA
+                    </Button>
                   </div>
                 </div>
                 <div className="pt-4 border-t">
@@ -214,7 +285,9 @@ export default function SettingsPage() {
                         Connect your Slack workspace
                       </p>
                     </div>
-                    <Button variant="outline">Connect</Button>
+                    <Button variant="outline" disabled>
+                      Connect
+                    </Button>
                   </div>
                   <div className="flex items-center justify-between p-4 border rounded-lg">
                     <div>
@@ -223,7 +296,9 @@ export default function SettingsPage() {
                         Sync incidents with Jira issues
                       </p>
                     </div>
-                    <Button variant="outline">Connect</Button>
+                    <Button variant="outline" disabled>
+                      Connect
+                    </Button>
                   </div>
                   <div className="flex items-center justify-between p-4 border rounded-lg">
                     <div>
@@ -232,7 +307,9 @@ export default function SettingsPage() {
                         Integrate with PagerDuty for on-call management
                       </p>
                     </div>
-                    <Button variant="outline">Connect</Button>
+                    <Button variant="outline" disabled>
+                      Connect
+                    </Button>
                   </div>
                 </div>
                 <div className="pt-4 border-t">
