@@ -18,90 +18,6 @@ import {
   useCreateIncident,
 } from "@/hooks/use-incidents";
 
-type Incident = {
-  id: string;
-  title: string;
-  type: string;
-  severity: "Critical" | "High" | "Medium" | "Low";
-  status: string;
-  affectedSystem: string;
-  affectedUsers: number | null;
-  createdAt: string;
-  updatedAt: string;
-  hasReport: boolean;
-};
-
-type IncidentDetail = {
-  id: string;
-  title: string;
-  description: string | null;
-  type: string;
-  severity: string;
-  status: string;
-  affectedSystem: string;
-  impactSummary: string | null;
-  affectedUsers: number | null;
-  suspectedCause: string | null;
-  detectedAt: string;
-  resolvedAt: string | null;
-  createdAt: string;
-  updatedAt: string;
-};
-
-type TimelineEntry = {
-  time: string;
-  event: string;
-};
-
-type ChecklistItem = {
-  title: string;
-  done: boolean;
-  category: string;
-};
-
-type TechnicalActionPlan = {
-  backend?: string[];
-  database?: string[];
-  qa?: string[];
-  devops?: string[];
-  security?: string[];
-  compliance?: string[];
-};
-
-type PostmortemReport = {
-  executiveSummary: string;
-  incidentDetails: string;
-  impact: string;
-  timeline: TimelineEntry[];
-  rootCause: string;
-  resolution: string;
-  preventionPlan: string[];
-  actionItems: string[];
-  owners: string[];
-  auditNotes: string[];
-};
-
-type RiskClassification = {
-  recommendedSeverity: string;
-  category: string;
-  businessRisk: string;
-  technicalRisk: string;
-  complianceRisk: string;
-  recommendedSla: string;
-};
-
-type Report = {
-  id: string;
-  riskClassification: RiskClassification;
-  timeline: TimelineEntry[];
-  checklist: ChecklistItem[];
-  technicalActionPlan: TechnicalActionPlan;
-  stakeholderSummary: string;
-  postmortemReport: PostmortemReport;
-  createdAt: string;
-  updatedAt: string;
-};
-
 type IncidentFormData = {
   title: string;
   description: string;
@@ -137,7 +53,6 @@ export default function IncidentsPage() {
   const handleCreateIncident = async (formData: IncidentFormData) => {
     const payload = {
       title: formData.title,
-      description: formData.description,
       type: formData.category,
       severity: formData.severity,
       status: "Open",
@@ -265,7 +180,7 @@ export default function IncidentsPage() {
               incident={{
                 id: incidentDetail.id,
                 title: incidentDetail.title,
-                description: incidentDetail.description || "",
+                description: incidentDetail.impactSummary,
                 severity: incidentDetail.severity,
                 status: incidentDetail.status,
                 category: incidentDetail.type,

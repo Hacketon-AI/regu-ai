@@ -16,13 +16,13 @@ type Incident = {
 type IncidentDetail = {
   id: string;
   title: string;
-  description: string | null;
   type: string;
   severity: string;
   status: string;
   affectedSystem: string;
-  impactSummary: string | null;
+  impactSummary: string;
   affectedUsers: number | null;
+  rawLogs: string | null;
   suspectedCause: string | null;
   detectedAt: string;
   resolvedAt: string | null;
@@ -86,7 +86,6 @@ type Report = {
 
 type CreateIncidentPayload = {
   title: string;
-  description: string;
   type: string;
   severity: string;
   status: string;
